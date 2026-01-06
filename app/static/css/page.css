@@ -1,0 +1,318 @@
+body {
+    font-family: 'Arial, sans-serif';
+}
+.hero {
+    background-image: url('../imgs/page/viajero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 10px;
+}
+.hero .lead {
+    font-size: 1.5rem;
+}
+.hero .p {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+.btn-custom {
+    background-color: #d32f2f;
+    color: white;
+    font-weight: bold;
+}
+.btn-custom:hover {
+    background-color: #b71c1c;
+    color: white;
+}
+@media(max-width: 768px) {
+    .hero {
+        justify-content: center;
+        text-align: center;
+    }
+    .hero-content {
+        background: rgba(0, 0, 0, 0.5);
+        max-width: 90%;
+    }
+    .hero .lead, .hero .p {
+        font-size: 1.2rem;
+    }
+}
+/* services section */
+.services {
+    background-image: url('../imgs/page/services.jpeg');
+}
+/* cards services */
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* advantages section */
+.advantages {
+    background-image: url('../imgs/page/advantages.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.advantages-box {
+    background-color: rgba(173, 216, 230, 0.7);
+    max-width: 800px;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+}
+
+/* testimonials section */
+.testimonials {
+    background-image: url('../imgs/page/testimonial.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: black;
+}
+
+.testimonials h2 {
+    font-weight: bold;
+}
+
+.advisory {
+    background-image: url('../imgs/page/flag.jpeg');
+    padding: 50px 0px 50px 0px;
+    background-size: cover;
+    background-position: center;
+    color: black;
+}
+
+.advisory .content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Advisory services */
+.advisory-services {
+    margin: 0;
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+.content-column {
+    max-width: 500px;
+}
+.image-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-inupt{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.contact-info {
+    margin-top: 5px;
+    color: #888;
+    font-size: 0.9em;
+}
+.small-image {
+    width: 200px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Mock interview section */
+.mock-interview {
+    margin: 0;
+    padding: 20px;
+    text-align: left;
+}
+.mock-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+.mock-image {
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.mock-image img {
+    width: 100%;
+    display: block;
+}
+/* Inteview tips section */
+.interview {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.interview img {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.interview .content {
+    flex: 1;
+}
+/* Contact section */
+.contact-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.image-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+    margin-bottom: 40px;
+}
+.gallery-image {
+    width: 33.33%;
+    max-height: 250px;
+    object-fit: cover;
+}
+.text-column {
+    max-width: 400px;
+}
+.form-column {
+    max-width: 400px;
+}
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #444;
+}
+.contact-info {
+    margin-bottom: 20px;
+    color: #888;
+    font-size: 0.9em;
+}
+/* Footer section */
+.footer-section {
+    background-image: url('../imgs/page/footer.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 100px 20px 200px;
+    color: white;
+}
+.footer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+.footer-content {
+    position: relative;
+    z-index: 2;
+    max-width: 100px;
+    margin: 0 auto;
+    text-align: left;
+}
+.link-section {
+    margin-top: 50px;
+}
+.link-group {
+    margin-bottom: 20px;
+}
+.link-group a, .contact-email {
+    display: block;
+    color: #c7e5ff; /* Color azul claro para los enlaces */
+    text-decoration: none;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+  }
+
+  .contact-address {
+    display: block;
+    color: #c7e5ff;
+    font-size: 1em;
+    margin-top: 5px;
+  }
+
+  .contact-bar {
+    background-color: #d32f2f; /* Color rojo para la barra de descargo de responsabilidad */
+    color: white;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+/* Disclaimer section */
+.disclaimer-section {
+    background-image: url('../imgs/page/disclaimer.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    color: #000;
+    position: relative;
+    overflow: hidden;
+}
+.disclaimer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(199, 215, 237, 0.8);
+    z-index: 1;
+}
+.disclaimer-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+/* Terms section */
+.terms-section {
+    background-image: url('../imgs/page/disclaimer.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    color: #000;
+    position: relative;
+    overflow: hidden;
+}
+.terms-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(199, 215, 237, 0.8);
+    z-index: 1;
+}
+.terms-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}

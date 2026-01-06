@@ -1,0 +1,119 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-image: url('../imgs/form/header.jpg'); /* Reemplaza con la URL de tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  h1 {
+    font-size: 3em;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    opacity: 0.8;
+  }
+
+  .form-card {
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro semitransparente */
+    backdrop-filter: blur(8px); /* Efecto de desenfoque detrás del formulario */
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 800px;
+    width: 90%;
+  }
+
+  .input-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Alinea los inputs y checkboxes */
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .input-group {
+    flex-grow: 1;
+    text-align: left;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    opacity: 0.8;
+  }
+
+  .custom-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    appearance: none; /* Oculta el estilo de flecha por defecto */
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path d="M10 4L6 8L2 4" fill="none" stroke="%23333" stroke-width="1.5"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    cursor: pointer;
+  }
+
+  .flag-icon {
+    margin-right: 8px;
+  }
+  
+  /* Estilo específico para la pregunta de ciudadanía múltiple */
+  .citizenship-group {
+    text-align: left;
+    white-space: nowrap; /* Evita que el texto se rompa */
+    padding-bottom: 5px; /* Ajuste para alinear con los inputs */
+  }
+
+  .checkbox-group label {
+    margin-right: 15px;
+    font-weight: normal;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  .checkbox-group input[type="radio"] {
+    margin-right: 5px;
+  }
+
+  .start-button {
+    background-color: #007bff; /* Color azul */
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Ocupa todo el ancho */
+    margin-top: 20px;
+  }
+
+  .start-button span {
+    font-size: 0.8em;
+  }
+
+  /* Línea horizontal sobre el botón */
+  .separator {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin: 30px 0;
+  }
