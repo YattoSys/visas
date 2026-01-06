@@ -8,4 +8,4 @@ class TestingConfig(Config):
     pass
 
 class DevelopmentConfig(Config):
-    pass
+    DEBUG = True

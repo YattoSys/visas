@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenervisa | Formulario DS-160</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a href="navbar-brand fw-bold text-primary" href="#">
+                <img src="{{ url_for('static', filename='imgs/page/logo.png') }}" alt="Tenervisa Logo" width="155" height="60" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="#" class="nav-link text-danger fw-bold">Inicio</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-danger fw-bold">Formulario DS-160</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-danger fw-bold">Asesoría</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-danger fw-bold">Simulación de entrevista</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="lead">Llenamos el formulario por ti.</p>
+                    <h1 class="display-2 fw-bolder">FORMULARIO<br>DS-160</h1>
+                    <p class="fs-5" style="color: white;">Realizado por profesionales, una manera fácil y rápida de obtener tu formulario<span class="text-warning fw-bold">¡Sin errores!</span></p>
+                    <a href="#" class="btn btn-custom btn-lg mt-3">Obten aquí</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 text-center" style="background-color: #0a0a80;">
+        <div class="container">
+            <p class="fs-4 text-white mb-4">
+                Realizado por nuestros profesionales, una manera fácil y rápida de obtener tu formulario DS-160 <span class="text-warning fw-bold">!sin errores!</span>
+            </p>
+            <a href="#" class="btn btn-danger btn-lg fw-bold">Obtén aquí</a>
+        </div>
+    </section>
+    <section class="text-center text-md-start">
+        <img src="{{ url_for('static', filename='/imgs/page/banner3.jpg') }}" alt="Visa" class="img-fluid w-100">
+        <div class="container my-5">
+            <h2 class="fw-bold text-center text-start">
+                ¿Quieres obtener tu visa para los Estados Unidos?
+            </h2>
+            <p class="fs-5 mt-3">Antes de pensar en la entrevista y los papeles que necesitas para tramitar la visa, lo primero que debes de tener es el <strong>Formulario DS-160</strong></p>
+            <p class="fs-5">Este es el documento oficial y fundamental que te permite iniciar el proceso de visado, debe de ser llenado totalmente en inglés, un <strong>Formulario DS-160</strong> y <strong>una buena entrevista</strong> determinan la elegibilidad del solicitante para una visa de no inmigrante, por lo que <strong>llenado y revisado por nuestros profesionales aumenta tus posibilidades de obtener tu Visa Americana.</strong></p>
+        </div>
+    </section>
+    <section class="py-5 services">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-5 text-white">Nuestros servicios</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{{ url_for('static', filename='imgs/page/ser1.jpg') }}" alt="Service 1">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Llenado experto FORMULARIO DS-160</h5>
+                            <p class="card-text">Llena tu información en tu idioma en una sesión que no caduca, nosotros la revisaremos por ti y procesaremos tu Formulario DS 160</p>
+                            <a href="#" class="btn btn-danger">Obten aquí</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{{ url_for('static', filename='imgs/page/s3.jpg') }}" alt="Service 2">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Asesoría</h5>
+                            <p class="card-text">Resuelve tus dudas sobre el proceso de visado en una única sesión individual con nuestros asesores expertos</p>
+                            <a href="#" class="btn btn-danger">Obten aquí</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{{ url_for('static', filename='imgs/page/s4.jpg') }}" alt="Service 3">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Sesión Entrevista Simulada</h5>
+                            <p class="card-text">Uno de nuestros asesores expertos en visas estará disponible para ayudarte en una sesión de entrevista simulada, analizaremos y guiaremos tus respuestas para que incrementes tus opciones de ser aprobado en el Consulado</p>
+                            <a href="#" class="btn btn-danger">Obten aquí</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 advantages">
+        <div class="container text-center text-white">
+            <h2 class="fw-bold mb-5 text-dark">Ventajas de nuestros servicios</h2>
+            <div class="mx-auto p-4 p-md-5 advantages-box">
+                <ul class="list-unstyled text-start fs-5 fw-normal text-dark">
+                    <li class="mb-3">✔️ Llenado del Formulario DS-160 por profesionales</li>
+                    <li class="mb-3">✔️ Asesoría personalizada para resolver tus dudas</li>
+                    <li class="mb-3">✔️ Simulación de entrevista para prepararte mejor</li>
+                    <li class="mb-3">✔️ Aumento de posibilidades de aprobación de visa</li>
+                    <li class="mb-3">✔️ Atención al cliente excepcional y soporte continuo</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="fw-bold mb-5 text-center">Preguntas frecuentes</h2>
+            <div class="mb-4">
+                <h5 class="fw-bold">¿Qué es el formulario DS-160 y por que es tan importante?</h5>
+                <p>Es el formulario oficial del Gobierno de los Estados Unidos, para solicitar una Visa de no inmigrante. Su importancia radica en que será usado para analizar tu perfil y decidir la aprobación o rechazo de la Visa solicitada</p>
+            </div>
+            <div class="mb-4">
+                <h5 class="fw-bold">¿En cuánto tiempo se procesará mi formulario DS-160 con Tenervisa?</h5>
+                <p>Una vez recibida tu solicitud, nuestro equipo se encargará de revisar la información y contactarte en caso de notar alguna inconsistencia. Terminada la fase de revisión y corrección de datos, el procesamiento de tu formulario no superará los 60 minutos</p>
+            </div>
+            <div class="mb-4">
+                <h5 class="fw-bold">¿Qué tipo de formulario DS-160 me entregará Tenervisa?</h5>
+                <p>Tenervisa procesará un formulario oficial por ti y te enviará dos archivos PDF por el medio de comunicación establecido, siendo estos el formulario DS-160 y la página de confirmación DS-160 requerida para la entrevista</p>
+            </div>
+            <div class="mb-4">
+                <h5 class="fw-bold">¿Qué tengo que hacer una vez obtenido mi formulario DS-160?</h5>
+                <p>Una vez obtenido el formulario DS-160, con el número de solicitud puedes continuar con el proceso de agendamiento en la página de la Embajada</p>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
+                    <h2>Clientes satisfechos</h2>
+                </div>
+                <div class="col-md-8">
+                    <p>Agradecida con la asesoría de expertos, mi entrevista en el consulado fue muy fácil, me sentí confiada y finalmente tengo mi visa! <strong>Laura Gonzalez</strong></p>
+                <p>Tener Visa realizó mi formulario DS-160 y también tuve una entrevista simulada muy enriquecedora, todo fue simple y práctico <strong>Federico Martínez</strong></p>
+                <p>Recomiendo al equipo de Tener Visa ampliamente su aporte facilito obtener mi visa, todo el proceso fue claro y muy agil, no tuve dudas <strong>Manuel Torres</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="advisory">
+        <div class="content">
+            <h2>Servicio de asesoría</h2>
+            <p>Nuestro servicio de asesoría consiste en una única sesion de videoconferencia sobre los siguientes aspectos: creación de la cuenta de la embajada, pago del MRV FEE, agendamiento, reagendamiento de la cita, anticipación de la cita, documentos requeridos</p>
+            <a href="#" class="btn btn-custom btn-lg mt-3">Iniciar aquí</a>
+        </div>
+    </section>
+    <section class="advisory-services">
+        <div class="content-column">
+            <h1>Adquiere nuestro servicio de Asesoría completando tu información.</h1>
+            <p>Nuestro equipo de expertos está disponible para ayudarle a responder las preguntas que pueda tener. Complete este formulario para enviar sus inquietudes directamente a nuestros agentes.</p>
+            <form action="#" method="post">
+                <label for="nombre" class="form-label">Nombre completo:</label><br>
+                <input type="text" name="nombre" id="nombre" class="form-control"><br>
+                <label for="email">Correo Electrónico:</label><br>
+                <input type="email" name="email" id="email" class="form-control"><br>
+                <label for="reason">Motivo del contacto</label>
+                <select name="reason" id="reason" class="form-select">
+                    <option value="">Seleccione una opcion</option>
+                    <option value="DS">Formulario DS-160</option>
+                    <option value="advice">Asesoría</option>
+                    <option value="interview">Entrevista</option>
+                </select>
+            </form>
+        </div>
+        <div class="image-column">
+            <img src="{{ url_for('static', filename='/imgs/page/hom.jpg')}}" alt="Imagen1" class="small-image">
+            <img src="{{ url_for('static', filename='/imgs/page/visa.jpg')}}" alt="Imagen2" class="small-image">
+            <img src="{{ url_for('static', filename='/imgs/page/avion.jpg')}}" alt="Imagen3" class="small-image">
+        </div>
+    </section>
+    <section class="interview">
+        <img src="{{ url_for('static', filename='/imgs/page/interview.jpg') }}" alt="interview">
+        <div class="content">
+            <h2>Sesión Entrevista Simulada</h2>
+            <p>Si las entrevistas te asustan, te ofrecemos el servicio de entrevista simulada en el cual te guiaremos y te mostraremos cómo es el proceso de la entrevista, aumentando tu confianza, enfocando tus respuestas hacia los aspectos más importantes observados por el Cónsul entrevistador.</p>
+            <a href="#" class="btn btn-lg btn-danger">Iniciar</a>
+        </div>
+    </section>
+    <div class="image-gallery">
+            <img src="{{ url_for('static', filename='/imgs/page/contact1.jpeg') }}" alt="Contact 1" class="gallery-image">
+            <img src="{{ url_for('static', filename='/imgs/page/contact2.jpg') }}" alt="Contact 2" class="gallery-image">
+            <img src="{{ url_for('static', filename='/imgs/page/contact3.jpg') }}" alt="Contact 3" class="gallery-image">
+        </div>
+    <section class="contact-section">
+        <div class="text-column">
+            <h1>Contacto</h1>
+            <p>Nuestro equipo de expertos está disponible para ayudarle a responder las preguntas que pueda tener. Complete este formulario para enviar sus inquietudes directamente a nuestros agentes.</p>
+        </div>
+        <div class="form-column">
+            <form action="#" method="POST">
+                <div style="margin-bottom: 20px;">
+                    <label for="nombre" class="form-label">Nombre completo</label>
+                    <div class="contact-info"></div> 
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label for="email" class="form-label">Dirección de correo electrónico</label>
+                    <div class="contact-info">hola@sitioincreible.mx</div> 
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label for="telefono" class="form-label">Número telefónico</label>
+                    <div class="contact-info">(55) 1234 5656</div>
+                </div>
+            </form>
+            <button type="submit" style="background-color: #d32f2f; color: white; padding: 10px 20px; border: none; border-radius: 5px; margin-top: 10px; cursor: pointer;">Enviar Mensaje</button>
+        </div>
+    </section>
+    <section class="footer-section">
+        <div class="overlay"></div>
+        <div class="content-wrapper">
+        <div class="links-section">
+            <div class="link-group">
+                <a href="#">Descargo de responsabilidad</a>
+                <span class="contact-address">Insurgentes 544, Monterrey, NL, México, C. P. 64020</span>
+            </div>
+            
+            <div class="link-group">
+                <a href="#">Términos y condiciones</a>
+                <span class="contact-address">Insurgentes 544, Monterrey, NL, México, C. P. 64020</span>
+            </div>
+            
+            <div class="link-group">
+                <a href="#">Aviso de privacidad</a>
+                <span class="contact-email">hola@sitioincreible.mx</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="contact-bar">
+        No somos una página gubernamental, somos una empresa de servicios independiente comprometida en brindarle un servicio eficiente y seguro.
+    </div>
+    </section>
+    <section class="disclaimer-section">
+        <div class="disclaimer-overlay"></div>
+        <div class="disclaimer-wrapper">
+            <h1>Descargo de responsabilidad</h1>
+            <p>Descargo de responsabilidad: Este sitio web no ofrece asesoramiento legal, no es una página oficial de gobierno ni tampoco es una consultoría de abogados. Usted puede realizar su solicitud a la página directa del gobierno si así lo desea. Nuestros servicios no implican honorarios de solicitud gubernamental, ni costos relacionados al proceso de visado. Todos nuestros representantes de servicio al cliente realizarán procesos profesionales relacionados exclusivamente con el servicio de llenado de formulario para la solicitud de visa, el cual se entregará en formato digital por los medios electrónicos previamente establecidos.</p>
+        </div>
+    </section>
+    <section class="terms-section">
+        <div class="terms-overlay"></div>
+        <div class="terms-wrapper">
+            <h1>Términos y condiciones</h1>
+
+    <h2>Aceptación de términos</h2>
+    <p>Aceptación de términos: Usted acepta cumplir con los siguientes términos y condiciones al acceder a los servicios proporcionados por TenerVisa. Dando por asumido que al contratar nuestros servicios estos términos y condiciones son aceptados de manera inmediata.</p>
+
+    <h2>Descripción del servicio</h2>
+    <p>Descripción del servicio: TenerVisa brinda un servicio a terceros que proporciona el llenado del formulario DS-160. Nuestro sitio web se esfuerza en garantizar que nuestra información esté actualizada sin embargo la exactitud del contenido podrá variar.</p>
+
+    <h2>Responsabilidades del usuario</h2>
+    <p>Responsabilidades del usuario: Los usuarios son responsables de proporcionar información clara, precisa y veraz, sin errores ni falsedades al utilizar nuestros servicios. No nos hacemos responsables de las consecuencias por faltantes de información o información engañosa.</p>
+
+    <h2>Proceso de solicitud de llenado de formulario</h2>
+    <p>Proceso de solicitud de llenado de formulario: Nuestro equipo de servicio al cliente brindará el formulario DS-160 en formato digital a través de los medios establecidos durante el proceso de contratación, el proceso se realizará de manera íntegra con la información previamente proporcionada por el cliente. Una vez entregado el formulario digital el proceso se da por concluido.</p>
+
+    <h2>Propiedad intelectual</h2>
+    <p>Propiedad intelectual: Todos los materiales, incluido el contenido, los logotipos y los materiales de este sitio web, son propiedad intelectual de TenerVisa y están protegidos por las leyes de propiedad intelectual. Los usuarios tienen prohibido usar, reproducir o distribuir nuestro contenido sin obtener el consentimiento previo por escrito.</p>
+
+    <h2>Política de privacidad</h2>
+    <p>Política de privacidad: Al utilizar los servicios de TenerVisa, usted reconoce y acepta los términos descritos en nuestra Política de privacidad. Revise la Política de privacidad para obtener detalles sobre cómo recopilamos, utilizamos y protegemos su información personal.</p>
+
+    <h2>Política de reembolso</h2>
+    <p>Política de reembolso: El pedido se considera completado al descargar el documento digital del formato DS-160, por lo que no se considera reembolsable una vez finalizada la entrega. Ofrecemos una garantía de reprocesamiento único de cortesía en caso de que el cliente haya omitido o introducido alguna información incorrecta. El cliente es responsable de introducir su dirección electrónica correctamente. En caso de errores es su responsabilidad si el entregable no llega a su destino.</p>
+
+    <h2>Limitación de responsabilidad</h2>
+    <p>Limitación de responsabilidad: TenerVisa no asume ninguna responsabilidad por daños directos, indirectos, incidentales, especiales o consecuentes que surjan de la utilización o la imposibilidad de utilizar nuestros servicios. Esto abarca, entre otros, daños relacionados con la pérdida de beneficios, fondo de comercio, datos u otras pérdidas intangibles.</p>
+
+    <h2>Ley aplicable</h2>
+    <p>Ley aplicable: Estos términos y condiciones están sujetos a las leyes de los Estados Unidos Mexicanos y se interpretarán de acuerdo con ellas. Cualquier disputa que surja o esté relacionada con estos términos se regirá únicamente por la jurisdicción de los tribunales de los Estados Unidos Mexicanos.</p>
+
+    <h2>Cambios a los términos</h2>
+    <p>Cambios a los términos: Nos reservamos el privilegio de modificar o ajustar estos términos y condiciones a nuestra discreción, sin notificación previa. Cualquier modificación entrará en vigor inmediatamente después de su publicación en esta página.</p>
+
+    <h2>Contáctenos</h2>
+    <p>Contáctenos: Si tiene alguna consulta o inquietud sobre estos términos y condiciones, no dude en comunicarse con nosotros.</p>
+
+    <p style="margin-top: 30px; font-weight: bold;">Al utilizar los servicios de TenerVisa, usted acepta los términos descritos en estos Términos y condiciones.</p>
+        </div>  
+    </section>
+</body>
+</html>
