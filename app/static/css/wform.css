@@ -1,0 +1,219 @@
+/* --- Estilos Generales y Contenedor --- */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f3f6; /* Fondo gris muy claro para el cuerpo de la página */
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Encabezado y Barra de Navegación Superior --- */
+
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #ffffff; /* Fondo blanco */
+    border-bottom: 1px solid #eee;
+}
+
+.logo a {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #007bff; /* Color del logo similar al de la imagen */
+    text-decoration: none;
+}
+
+.top-nav a {
+    color: #6c757d;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 0.9em;
+}
+
+.top-nav .contact-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* --- Mensaje de Bienvenida y Alertas --- */
+
+.welcome-section {
+    padding: 20px 40px;
+    text-align: center;
+    background-color: #e9f0f6; /* Fondo azul claro suave */
+}
+
+.welcome-section h2 {
+    font-size: 1.5em;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+/* Estilos para los mensajes de alerta (con icono) */
+.alert-note {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 8px;
+    font-size: 0.85em;
+    color: #212529;
+}
+
+.alert-note::before {
+    content: 'ⓘ'; /* Icono de información o checkmark */
+    font-size: 1.1em;
+    margin-right: 8px;
+    color: #28a745; /* Color verde para el checkmark/icono */
+}
+
+/* --- Barra de Navegación del Formulario (Pestañas) --- */
+
+.form-nav {
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa;
+    padding: 0 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-item {
+    padding: 15px 12px;
+    margin: 0 5px;
+    font-size: 0.85em;
+    color: #6c757d;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom 0.3s;
+    text-align: center;
+}
+
+.nav-item.active {
+    color: #007bff;
+    border-bottom: 3px solid #007bff; /* Pestaña activa en azul */
+    background-color: white;
+}
+
+/* --- Contenedor del Formulario (Contenido Principal) --- */
+
+.form-content {
+    padding: 40px;
+    max-width: 900px; /* Ajusta el ancho del contenido del formulario */
+    margin: 0 auto;
+}
+
+/* Títulos de secciones del formulario */
+h3 {
+    font-size: 1.3em;
+    color: #343a40;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+/* --- Estilos de Campos de Formulario --- */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.95em;
+    color: #343a40;
+    margin-bottom: 5px;
+    font-weight: bold; /* Etiquetas en negrita */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.help-text {
+    display: block;
+    font-size: 0.8em;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+/* Estilo para los campos de ciudadanía y nombres (similares a la imagen) */
+.name-row {
+    display: flex;
+    gap: 20px;
+}
+
+.name-row .form-group {
+    flex-basis: 50%;
+}
+
+/* Estilos específicos para la fecha de nacimiento */
+.date-of-birth-row {
+    display: flex;
+    gap: 10px;
+}
+
+.date-of-birth-row .form-group {
+    flex-basis: calc(33.33% - 10px);
+}
+
+/* Estilos para checkboxes y radio buttons */
+.radio-group label,
+.checkbox-group label {
+    font-weight: normal;
+    color: #343a40;
+}
+
+.checkbox-group input[type="checkbox"],
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* --- Botón Siguiente --- */
+
+.next-step-button {
+    background-color: #28a745; /* Verde como en la imagen */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px; /* Borde más redondo */
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    float: right;
+    margin-top: 30px;
+}
