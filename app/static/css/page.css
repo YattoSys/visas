@@ -1,14 +1,26 @@
 body {
     font-family: 'Arial, sans-serif';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* Ensure images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
 }
 .hero {
     background-image: url('../imgs/page/viajero.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: scroll;
     height: 100vh;
+    min-height: 600px;
     display: flex;
     align-items: center;
     color: black;
+    padding-top: 80px;
 }
 .hero-content {
     background-color: rgba(0, 0, 0, 0.3);
@@ -17,6 +29,7 @@ body {
 }
 .hero .lead {
     font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 .hero .p {
     font-size: 1.5rem;
@@ -31,17 +44,239 @@ body {
     background-color: #b71c1c;
     color: white;
 }
+/* Responsive styles for mobile devices (iOS and Android) */
 @media(max-width: 768px) {
     .hero {
         justify-content: center;
         text-align: center;
+        height: 70vh;
+        min-height: 500px;
+        padding-top: 80px;
     }
     .hero-content {
         background: rgba(0, 0, 0, 0.5);
         max-width: 90%;
     }
-    .hero .lead, .hero .p {
-        font-size: 1.2rem;
+    .hero .lead {
+        font-size: 1.1rem;
+    }
+    .hero .display-2 {
+        font-size: 2.5rem;
+    }
+    .hero .fs-5 {
+        font-size: 1rem !important;
+    }
+    .hero .btn-lg {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+    
+    /* Services section mobile */
+    .services {
+        padding: 30px 15px;
+    }
+    
+    /* Advantages section mobile */
+    .advantages-box {
+        margin: 0 15px;
+        padding: 20px !important;
+    }
+    .advantages-box ul {
+        font-size: 1rem !important;
+    }
+    
+    /* Testimonials mobile */
+    .testimonials {
+        padding: 30px 15px;
+    }
+    .testimonials h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    /* Advisory section mobile */
+    .advisory {
+        padding: 30px 15px;
+    }
+    .advisory .content {
+        margin: 0 15px;
+        padding: 20px;
+    }
+    
+    /* Advisory services mobile */
+    .advisory-services {
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 20px;
+    }
+    .content-column {
+        max-width: 100%;
+    }
+    .image-column {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .small-image {
+        width: 150px;
+        max-width: 48%;
+    }
+    
+    /* Interview section mobile */
+    .interview {
+        flex-direction: column;
+        padding: 20px 15px;
+        text-align: center;
+    }
+    .interview img {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+    .interview .content {
+        text-align: left;
+    }
+    
+    /* Image gallery mobile */
+    .image-gallery {
+        flex-direction: column;
+        gap: 0;
+    }
+    .gallery-image {
+        width: 100%;
+        max-height: 200px;
+    }
+    
+    /* Contact section mobile */
+    .contact-section {
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 30px;
+    }
+    .text-column,
+    .form-column {
+        max-width: 100%;
+    }
+    
+    /* Footer mobile */
+    .footer-section {
+        padding: 50px 15px 150px;
+    }
+    .links-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .link-group {
+        margin-bottom: 15px;
+    }
+    .contact-bar {
+        font-size: 0.9rem;
+        padding: 15px;
+        line-height: 1.4;
+    }
+    
+    /* Disclaimer and Terms mobile */
+    .disclaimer-section,
+    .terms-section {
+        padding: 30px 15px;
+    }
+    .disclaimer-wrapper,
+    .terms-wrapper {
+        max-width: 100%;
+    }
+    .disclaimer-wrapper h1,
+    .terms-wrapper h1 {
+        font-size: 1.8rem;
+    }
+    .disclaimer-wrapper h2,
+    .terms-wrapper h2 {
+        font-size: 1.4rem;
+    }
+    
+    /* General text adjustments */
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    .fs-4 {
+        font-size: 1.1rem !important;
+    }
+    .fs-5 {
+        font-size: 1rem !important;
+    }
+    
+    /* Button adjustments */
+    .btn-lg {
+        font-size: 1rem;
+        padding: 12px 24px;
+    }
+    
+    /* Container padding */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+/* Extra small devices (phones in portrait) */
+@media(max-width: 576px) {
+    .hero {
+        height: 60vh;
+        min-height: 400px;
+        padding-top: 70px;
+    }
+    .hero .display-2 {
+        font-size: 2rem;
+    }
+    .hero .lead {
+        font-size: 1rem;
+    }
+    
+    .navbar-brand img {
+        width: 120px;
+        height: auto;
+    }
+    
+    .small-image {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .advantages-box ul {
+        font-size: 0.9rem !important;
+        padding-left: 20px;
+    }
+    
+    .contact-bar {
+        font-size: 0.8rem;
+        padding: 12px;
+    }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        height: -webkit-fill-available;
+        min-height: 500px;
+    }
+    
+    /* Fix for iOS viewport height issues */
+    @media(max-width: 768px) {
+        .hero {
+            height: 100vh;
+            height: -webkit-fill-available;
+        }
+    }
+}
+
+/* Android specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .hero {
+        min-height: 500px;
     }
 }
 /* services section */
@@ -52,6 +287,13 @@ body {
 .card img {
     height: 200px;
     object-fit: cover;
+    width: 100%;
+}
+
+@media(max-width: 768px) {
+    .card img {
+        height: 180px;
+    }
 }
 
 /* advantages section */
@@ -98,11 +340,13 @@ body {
 /* Advisory services */
 .advisory-services {
     margin: 0;
-    padding: 20px;
+    padding: 40px 20px;
     text-align: left;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     gap: 40px;
+    flex-wrap: wrap;
 }
 .content-column {
     max-width: 500px;
@@ -112,13 +356,25 @@ body {
     flex-direction: column;
     gap: 10px;
 }
-.form-inupt{
+.form-input,
+.form-control,
+.form-select {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-top: 5px;
+    margin-bottom: 15px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 16px; /* Prevents zoom on iOS */
+}
+
+@media(max-width: 768px) {
+    .form-control,
+    .form-select {
+        font-size: 16px; /* Prevents zoom on iOS when focusing inputs */
+        padding: 12px;
+    }
 }
 .contact-info {
     margin-top: 5px;
@@ -161,8 +417,7 @@ body {
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding: 40px 100px;
 }
 .interview img {
     width: 300px;
@@ -176,15 +431,19 @@ body {
 .contact-section {
     display: flex;
     justify-content: space-around;
-    padding: 0 20px;
+    align-items: flex-start;
+    padding: 40px 20px;
     max-width: 1000px;
     margin: 0 auto;
+    gap: 40px;
+    flex-wrap: wrap;
 }
 .image-gallery {
     display: flex;
     justify-content: center;
     gap: 1px;
     margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 .gallery-image {
     width: 33.33%;
@@ -215,6 +474,17 @@ body {
     position: relative;
     padding: 100px 20px 200px;
     color: white;
+    min-height: 400px;
+}
+
+.links-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
 }
 .footer-overlay {
     position: absolute;
@@ -315,4 +585,52 @@ body {
     z-index: 2;
     max-width: 900px;
     margin: 0 auto;
+}
+
+/* Navbar responsive styles */
+.navbar {
+    padding: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 4px 8px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.navbar-nav .nav-link {
+    transition: color 0.3s ease;
+}
+
+@media(max-width: 768px) {
+    .navbar {
+        padding: 8px 0;
+    }
+    
+    .navbar-brand img {
+        width: 120px;
+        height: auto;
+    }
+    
+    .navbar-nav {
+        text-align: center;
+        margin-top: 15px;
+    }
+    
+    .nav-link {
+        padding: 10px 0;
+        font-size: 1rem;
+    }
+    
+    .navbar-collapse {
+        background-color: rgba(255, 255, 255, 0.98);
+        margin-top: 10px;
+        padding: 15px;
+        border-radius: 5px;
+    }
 }
