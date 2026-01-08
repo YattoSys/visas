@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Tenervisa | Formulario DS-160</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/page.css') }}">
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white bg-white shadow-sm fixed-top">
         <div class="container">
-            <a href="navbar-brand fw-bold text-primary" href="#">
+            <a class="navbar-brand fw-bold text-primary" href="#">
                 <img src="{{ url_for('static', filename='imgs/page/logo.png') }}" alt="Tenervisa Logo" width="155" height="60" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -29,7 +33,7 @@
     <section class="hero">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-12 col-md-4">
                     <p class="lead">Llenamos el formulario por ti.</p>
                     <h1 class="display-2 fw-bolder">FORMULARIO<br>DS-160</h1>
                     <p class="fs-5" style="color: white;">Realizado por profesionales, una manera fácil y rápida de obtener tu formulario<span class="text-warning fw-bold">¡Sin errores!</span></p>
@@ -60,9 +64,9 @@
         <div class="container text-center">
             <h2 class="fw-bold mb-5 text-white">Nuestros servicios</h2>
             <div class="row g-4">
-                <div class="col-md-4">
+                <div class="col-12 col-md-4">
                     <div class="card h-100 shadow-sm">
-                        <img src="{{ url_for('static', filename='imgs/page/ser1.jpg') }}" alt="Service 1">
+                        <img src="{{ url_for('static', filename='imgs/page/ser1.jpg') }}" alt="Service 1" class="img-fluid">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Llenado experto FORMULARIO DS-160</h5>
                             <p class="card-text">Llena tu información en tu idioma en una sesión que no caduca, nosotros la revisaremos por ti y procesaremos tu Formulario DS 160</p>
@@ -70,9 +74,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-12 col-md-4">
                     <div class="card h-100 shadow-sm">
-                        <img src="{{ url_for('static', filename='imgs/page/s3.jpg') }}" alt="Service 2">
+                        <img src="{{ url_for('static', filename='imgs/page/s3.jpg') }}" alt="Service 2" class="img-fluid">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Asesoría</h5>
                             <p class="card-text">Resuelve tus dudas sobre el proceso de visado en una única sesión individual con nuestros asesores expertos</p>
@@ -80,9 +84,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-12 col-md-4">
                     <div class="card h-100 shadow-sm">
-                        <img src="{{ url_for('static', filename='imgs/page/s4.jpg') }}" alt="Service 3">
+                        <img src="{{ url_for('static', filename='imgs/page/s4.jpg') }}" alt="Service 3" class="img-fluid">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Sesión Entrevista Simulada</h5>
                             <p class="card-text">Uno de nuestros asesores expertos en visas estará disponible para ayudarte en una sesión de entrevista simulada, analizaremos y guiaremos tus respuestas para que incrementes tus opciones de ser aprobado en el Consulado</p>
@@ -131,10 +135,10 @@
     <section class="testimonials py-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
+                <div class="col-12 col-md-4 text-center text-md-start mb-4 mb-md-0">
                     <h2>Clientes satisfechos</h2>
                 </div>
-                <div class="col-md-8">
+                <div class="col-12 col-md-8">
                     <p>Agradecida con la asesoría de expertos, mi entrevista en el consulado fue muy fácil, me sentí confiada y finalmente tengo mi visa! <strong>Laura Gonzalez</strong></p>
                 <p>Tener Visa realizó mi formulario DS-160 y también tuve una entrevista simulada muy enriquecedora, todo fue simple y práctico <strong>Federico Martínez</strong></p>
                 <p>Recomiendo al equipo de Tener Visa ampliamente su aporte facilito obtener mi visa, todo el proceso fue claro y muy agil, no tuve dudas <strong>Manuel Torres</strong></p>
