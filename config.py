@@ -9,3 +9,4 @@ class TestingConfig(Config):
 
 class DevelopmentConfig(Config):
     DEBUG = True
+    SECRET_KEY = 'dev-secret-key-change-in-production'

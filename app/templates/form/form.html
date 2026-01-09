@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenervisa | Formulario de Visa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+</head>
+<body>
+    <div class="wizard-container">
+        <div class="wizard-header">
+            <h1>Formulario de Solicitud de Visa</h1>
+            <p class="subtitle">Complete todos los pasos para enviar su solicitud</p>
+        </div>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="step-indicators">
+                <div class="step-indicator active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Personal</span>
+                </div>
+                <div class="step-indicator" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Pasaporte</span>
+                </div>
+                <div class="step-indicator" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Viaje</span>
+                </div>
+                <div class="step-indicator" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-label">Contacto</span>
+                </div>
+                <div class="step-indicator" data-step="5">
+                    <span class="step-number">5</span>
+                    <span class="step-label">Familiar</span>
+                </div>
+                <div class="step-indicator" data-step="6">
+                    <span class="step-number">6</span>
+                    <span class="step-label">Empleo</span>
+                </div>
+                <div class="step-indicator" data-step="7">
+                    <span class="step-number">7</span>
+                    <span class="step-label">Seguridad</span>
+                </div>
+                <div class="step-indicator" data-step="8">
+                    <span class="step-number">8</span>
+                    <span class="step-label">Revisión</span>
+                </div>
+            </div>
+        </div>
+
+        <form id="visaForm" class="wizard-form" method="POST" action="{{ url_for('form.submit_form') }}">
+            <!-- Step 1: Información Personal -->
+            <div class="wizard-step active" data-step="1">
+                <h2>Información Personal</h2>
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Nombre(s) <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Apellido(s) <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="middleName">Segundo Nombre (si aplica)</label>
+                            <input type="text" id="middleName" name="middleName">
+                        </div>
+                        <div class="form-group">
+                            <label for="otherNames">Otros nombres utilizados (alias, nombres artísticos, etc.)</label>
+                            <input type="text" id="otherNames" name="otherNames">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dateOfBirth">Fecha de Nacimiento <span class="required">*</span></label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="placeOfBirth">Lugar de Nacimiento (Ciudad) <span class="required">*</span></label>
+                            <input type="text" id="placeOfBirth" name="placeOfBirth" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="countryOfBirth">País de Nacimiento <span class="required">*</span></label>
+                            <select id="countryOfBirth" name="countryOfBirth" required>
+                                <option value="">Seleccione un país</option>
+                                <option value="MX">México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="CA">Canadá</option>
+                                <option value="ES">España</option>
+                                <option value="AR">Argentina</option>
+                                <option value="CO">Colombia</option>
+                                <option value="PE">Perú</option>
+                                <option value="CL">Chile</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nationality">Nacionalidad <span class="required">*</span></label>
+                            <select id="nationality" name="nationality" required>
+                                <option value="">Seleccione una nacionalidad</option>
+                                <option value="MX">México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="CA">Canadá</option>
+                                <option value="ES">España</option>
+                                <option value="AR">Argentina</option>
+                                <option value="CO">Colombia</option>
+                                <option value="PE">Perú</option>
+                                <option value="CL">Chile</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gender">Género <span class="required">*</span></label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Seleccione</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                                <option value="O">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="maritalStatus">Estado Civil <span class="required">*</span></label>
+                            <select id="maritalStatus" name="maritalStatus" required>
+                                <option value="">Seleccione</option>
+                                <option value="single">Soltero(a)</option>
+                                <option value="married">Casado(a)</option>
+                                <option value="divorced">Divorciado(a)</option>
+                                <option value="widowed">Viudo(a)</option>
+                                <option value="separated">Separado(a)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Información de Pasaporte -->
+            <div class="wizard-step" data-step="2">
+                <h2>Información de Pasaporte</h2>
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="passportNumber">Número de Pasaporte <span class="required">*</span></label>
+                            <input type="text" id="passportNumber" name="passportNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passportIssuingCountry">País Emisor del Pasaporte <span class="required">*</span></label>
+                            <select id="passportIssuingCountry" name="passportIssuingCountry" required>
+                                <option value="">Seleccione un país</option>
+                                <option value="MX">México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="CA">Canadá</option>
+                                <option value="ES">España</option>
+                                <option value="AR">Argentina</option>
+                                <option value="CO">Colombia</option>
+                                <option value="PE">Perú</option>
+                                <option value="CL">Chile</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="passportIssueDate">Fecha de Emisión <span class="required">*</span></label>
+                            <input type="date" id="passportIssueDate" name="passportIssueDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passportExpiryDate">Fecha de Vencimiento <span class="required">*</span></label>
+                            <input type="date" id="passportExpiryDate" name="passportExpiryDate" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="passportCityOfIssue">Ciudad de Emisión <span class="required">*</span></label>
+                            <input type="text" id="passportCityOfIssue" name="passportCityOfIssue" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passportIssuingAuthority">Autoridad Emisora <span class="required">*</span></label>
+                            <input type="text" id="passportIssuingAuthority" name="passportIssuingAuthority" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>¿Ha perdido o le han robado un pasaporte? <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="lostPassport" value="yes" required> Sí</label>
+                                <label><input type="radio" name="lostPassport" value="no" required> No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row" id="lostPassportDetails" style="display: none;">
+                        <div class="form-group full-width">
+                            <label for="lostPassportExplanation">Explique los detalles</label>
+                            <textarea id="lostPassportExplanation" name="lostPassportExplanation" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Información de Viaje -->
+            <div class="wizard-step" data-step="3">
+                <h2>Información de Viaje</h2>
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="travelPurpose">Propósito del Viaje <span class="required">*</span></label>
+                            <select id="travelPurpose" name="travelPurpose" required>
+                                <option value="">Seleccione</option>
+                                <option value="tourism">Turismo</option>
+                                <option value="business">Negocios</option>
+                                <option value="study">Estudios</option>
+                                <option value="work">Trabajo</option>
+                                <option value="transit">Tránsito</option>
+                                <option value="medical">Tratamiento médico</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="intendedArrivalDate">Fecha Prevista de Llegada <span class="required">*</span></label>
+                            <input type="date" id="intendedArrivalDate" name="intendedArrivalDate" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="intendedDepartureDate">Fecha Prevista de Salida <span class="required">*</span></label>
+                            <input type="date" id="intendedDepartureDate" name="intendedDepartureDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="durationOfStay">Duración Estimada de la Estadía (días) <span class="required">*</span></label>
+                            <input type="number" id="durationOfStay" name="durationOfStay" min="1" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="destinationCountry">País de Destino <span class="required">*</span></label>
+                            <select id="destinationCountry" name="destinationCountry" required>
+                                <option value="">Seleccione un país</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="CA">Canadá</option>
+                                <option value="ES">España</option>
+                                <option value="UK">Reino Unido</option>
+                                <option value="FR">Francia</option>
+                                <option value="DE">Alemania</option>
+                                <option value="IT">Italia</option>
+                                <option value="AU">Australia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="destinationCity">Ciudad de Destino <span class="required">*</span></label>
+                            <input type="text" id="destinationCity" name="destinationCity" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>¿Ha visitado este país anteriormente? <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="previousVisit" value="yes" required> Sí</label>
+                                <label><input type="radio" name="previousVisit" value="no" required> No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row" id="previousVisitDetails" style="display: none;">
+                        <div class="form-group">
+                            <label for="previousVisitDate">Fecha de la última visita</label>
+                            <input type="date" id="previousVisitDate" name="previousVisitDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="previousVisitDuration">Duración de la última visita (días)</label>
+                            <input type="number" id="previousVisitDuration" name="previousVisitDuration" min="1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="accommodationDetails">Detalles de Alojamiento <span class="required">*</span></label>
+                            <textarea id="accommodationDetails" name="accommodationDetails" rows="3" placeholder="Dirección del hotel, dirección de amigos/familiares, etc." required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Información de Contacto -->
+            <div class="wizard-step" data-step="4">
+                <h2>Información de Contacto</h2>
+                <div class="form-section">
+                    <h3>Dirección Actual</h3>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="currentAddress">Dirección Completa <span class="required">*</span></label>
+                            <input type="text" id="currentAddress" name="currentAddress" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="currentCity">Ciudad <span class="required">*</span></label>
+                            <input type="text" id="currentCity" name="currentCity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentState">Estado/Provincia <span class="required">*</span></label>
+                            <input type="text" id="currentState" name="currentState" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="currentPostalCode">Código Postal <span class="required">*</span></label>
+                            <input type="text" id="currentPostalCode" name="currentPostalCode" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentCountry">País <span class="required">*</span></label>
+                            <select id="currentCountry" name="currentCountry" required>
+                                <option value="">Seleccione un país</option>
+                                <option value="MX">México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="CA">Canadá</option>
+                                <option value="ES">España</option>
+                                <option value="AR">Argentina</option>
+                                <option value="CO">Colombia</option>
+                                <option value="PE">Perú</option>
+                                <option value="CL">Chile</option>
+                            </select>
+                        </div>
+                    </div>
+                    <h3>Información de Contacto</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phoneNumber">Teléfono <span class="required">*</span></label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobileNumber">Teléfono Móvil</label>
+                            <input type="tel" id="mobileNumber" name="mobileNumber">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="alternateEmail">Correo Electrónico Alternativo</label>
+                            <input type="email" id="alternateEmail" name="alternateEmail">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>¿Su dirección de correo electrónico es la misma que la de su contacto de emergencia?</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="sameEmailAsEmergency" value="yes"> Sí</label>
+                                <label><input type="radio" name="sameEmailAsEmergency" value="no"> No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Contacto de Emergencia</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emergencyContactName">Nombre Completo <span class="required">*</span></label>
+                            <input type="text" id="emergencyContactName" name="emergencyContactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergencyContactRelationship">Relación <span class="required">*</span></label>
+                            <select id="emergencyContactRelationship" name="emergencyContactRelationship" required>
+                                <option value="">Seleccione</option>
+                                <option value="spouse">Cónyuge</option>
+                                <option value="parent">Padre/Madre</option>
+                                <option value="sibling">Hermano(a)</option>
+                                <option value="child">Hijo(a)</option>
+                                <option value="friend">Amigo(a)</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emergencyContactPhone">Teléfono <span class="required">*</span></label>
+                            <input type="tel" id="emergencyContactPhone" name="emergencyContactPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergencyContactEmail">Correo Electrónico</label>
+                            <input type="email" id="emergencyContactEmail" name="emergencyContactEmail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Información Familiar -->
+            <div class="wizard-step" data-step="5">
+                <h2>Información Familiar</h2>
+                <div class="form-section">
+                    <h3>Información del Cónyuge (si aplica)</h3>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>¿Está casado actualmente? <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="isMarried" value="yes" required> Sí</label>
+                                <label><input type="radio" name="isMarried" value="no" required> No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="spouseInfo" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="spouseFirstName">Nombre del Cónyuge <span class="required">*</span></label>
+                                <input type="text" id="spouseFirstName" name="spouseFirstName">
+                            </div>
+                            <div class="form-group">
+                                <label for="spouseLastName">Apellido del Cónyuge <span class="required">*</span></label>
+                                <input type="text" id="spouseLastName" name="spouseLastName">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="spouseDateOfBirth">Fecha de Nacimiento del Cónyuge</label>
+                                <input type="date" id="spouseDateOfBirth" name="spouseDateOfBirth">
+                            </div>
+                            <div class="form-group">
+                                <label for="spouseNationality">Nacionalidad del Cónyuge</label>
+                                <select id="spouseNationality" name="spouseNationality">
+                                    <option value="">Seleccione</option>
+                                    <option value="MX">México</option>
+                                    <option value="US">Estados Unidos</option>
+                                    <option value="CA">Canadá</option>
+                                    <option value="ES">España</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Información de los Padres</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fatherFirstName">Nombre del Padre <span class="required">*</span></label>
+                            <input type="text" id="fatherFirstName" name="fatherFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fatherLastName">Apellido del Padre <span class="required">*</span></label>
+                            <input type="text" id="fatherLastName" name="fatherLastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fatherDateOfBirth">Fecha de Nacimiento del Padre</label>
+                            <input type="date" id="fatherDateOfBirth" name="fatherDateOfBirth">
+                        </div>
+                        <div class="form-group">
+                            <label for="fatherNationality">Nacionalidad del Padre <span class="required">*</span></label>
+                            <select id="fatherNationality" name="fatherNationality" required>
+                                <option value="">Seleccione</option>
+                                <option value="MX">México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="CA">Canadá</option>
+                                <option value="ES">España</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="motherFirstName">Nombre de la Madre <span class="required">*</span></label>
+                            <input type="text" id="motherFirstName" name="motherFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="motherLastName">Apellido de la Madre <span class="required">*</span></label>
+                            <input type="text" id="motherLastName" name="motherLastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="motherDateOfBirth">Fecha de Nacimiento de la Madre</label>
+                            <input type="date" id="motherDateOfBirth" name="motherDateOfBirth">
+                        </div>
+                        <div class="form-group">
+                            <label for="motherNationality">Nacionalidad de la Madre <span class="required">*</span></label>
+                            <select id="motherNationality" name="motherNationality" required>
+                                <option value="">Seleccione</option>
+                                <option value="MX">México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="CA">Canadá</option>
+                                <option value="ES">España</option>
+                            </select>
+                        </div>
+                    </div>
+                    <h3>Hijos (si aplica)</h3>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>¿Tiene hijos? <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="hasChildren" value="yes" required> Sí</label>
+                                <label><input type="radio" name="hasChildren" value="no" required> No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="childrenInfo" style="display: none;">
+                        <div class="children-container">
+                            <div class="child-entry">
+                                <h4>Hijo(a) 1</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Nombre</label>
+                                        <input type="text" name="childFirstName[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Apellido</label>
+                                        <input type="text" name="childLastName[]">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Fecha de Nacimiento</label>
+                                        <input type="date" name="childDateOfBirth[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nacionalidad</label>
+                                        <select name="childNationality[]">
+                                            <option value="">Seleccione</option>
+                                            <option value="MX">México</option>
+                                            <option value="US">Estados Unidos</option>
+                                            <option value="CA">Canadá</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-add-child">Agregar Otro Hijo</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Información de Empleo/Educación -->
+            <div class="wizard-step" data-step="6">
+                <h2>Información de Empleo y Educación</h2>
+                <div class="form-section">
+                    <h3>Empleo Actual</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="occupation">Ocupación/Profesión <span class="required">*</span></label>
+                            <input type="text" id="occupation" name="occupation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="employerName">Nombre del Empleador <span class="required">*</span></label>
+                            <input type="text" id="employerName" name="employerName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employerAddress">Dirección del Empleador <span class="required">*</span></label>
+                            <input type="text" id="employerAddress" name="employerAddress" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="employerCity">Ciudad <span class="required">*</span></label>
+                            <input type="text" id="employerCity" name="employerCity" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employerCountry">País <span class="required">*</span></label>
+                            <select id="employerCountry" name="employerCountry" required>
+                                <option value="">Seleccione</option>
+                                <option value="MX">México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="CA">Canadá</option>
+                                <option value="ES">España</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="employerPhone">Teléfono del Empleador</label>
+                            <input type="tel" id="employerPhone" name="employerPhone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employmentStartDate">Fecha de Inicio <span class="required">*</span></label>
+                            <input type="date" id="employmentStartDate" name="employmentStartDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="monthlyIncome">Ingreso Mensual (USD) <span class="required">*</span></label>
+                            <input type="number" id="monthlyIncome" name="monthlyIncome" min="0" step="0.01" required>
+                        </div>
+                    </div>
+                    <h3>Educación</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="educationLevel">Nivel de Educación <span class="required">*</span></label>
+                            <select id="educationLevel" name="educationLevel" required>
+                                <option value="">Seleccione</option>
+                                <option value="primary">Primaria</option>
+                                <option value="secondary">Secundaria</option>
+                                <option value="high_school">Preparatoria</option>
+                                <option value="bachelor">Licenciatura</option>
+                                <option value="master">Maestría</option>
+                                <option value="phd">Doctorado</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="schoolName">Nombre de la Institución</label>
+                            <input type="text" id="schoolName" name="schoolName">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="schoolCity">Ciudad de la Institución</label>
+                            <input type="text" id="schoolCity" name="schoolCity">
+                        </div>
+                        <div class="form-group">
+                            <label for="schoolCountry">País de la Institución</label>
+                            <select id="schoolCountry" name="schoolCountry">
+                                <option value="">Seleccione</option>
+                                <option value="MX">México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="CA">Canadá</option>
+                                <option value="ES">España</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7: Información de Seguridad -->
+            <div class="wizard-step" data-step="7">
+                <h2>Información de Seguridad</h2>
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>¿Alguna vez ha sido condenado por un delito o infracción? <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="criminalRecord" value="yes" required> Sí</label>
+                                <label><input type="radio" name="criminalRecord" value="no" required> No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="criminalRecordDetails" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="criminalRecordExplanation">Explique los detalles</label>
+                                <textarea id="criminalRecordExplanation" name="criminalRecordExplanation" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>¿Alguna vez ha sido rechazado una visa o entrada a algún país? <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="visaDenied" value="yes" required> Sí</label>
+                                <label><input type="radio" name="visaDenied" value="no" required> No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="visaDeniedDetails" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="visaDeniedCountry">País</label>
+                                <input type="text" id="visaDeniedCountry" name="visaDeniedCountry">
+                            </div>
+                            <div class="form-group">
+                                <label for="visaDeniedDate">Fecha</label>
+                                <input type="date" id="visaDeniedDate" name="visaDeniedDate">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="visaDeniedExplanation">Razón del rechazo</label>
+                                <textarea id="visaDeniedExplanation" name="visaDeniedExplanation" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>¿Tiene alguna enfermedad contagiosa o condición médica que requiera atención? <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="medicalCondition" value="yes" required> Sí</label>
+                                <label><input type="radio" name="medicalCondition" value="no" required> No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="medicalConditionDetails" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="medicalConditionExplanation">Explique los detalles</label>
+                                <textarea id="medicalConditionExplanation" name="medicalConditionExplanation" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>¿Está involucrado en actividades terroristas o ha proporcionado apoyo a organizaciones terroristas? <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="terroristActivity" value="yes" required> Sí</label>
+                                <label><input type="radio" name="terroristActivity" value="no" required> No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>¿Ha estado involucrado en tráfico de drogas? <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="drugTrafficking" value="yes" required> Sí</label>
+                                <label><input type="radio" name="drugTrafficking" value="no" required> No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>¿Ha estado involucrado en actividades de lavado de dinero? <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="moneyLaundering" value="yes" required> Sí</label>
+                                <label><input type="radio" name="moneyLaundering" value="no" required> No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 8: Revisión y Confirmación -->
+            <div class="wizard-step" data-step="8">
+                <h2>Revisión y Confirmación</h2>
+                <div class="form-section review-section">
+                    <p>Por favor, revise toda la información antes de enviar. Asegúrese de que todos los datos sean correctos.</p>
+                    <div id="reviewContent" class="review-content">
+                        <!-- El contenido de revisión se generará dinámicamente con JavaScript -->
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="confirmAccuracy" name="confirmAccuracy" required>
+                                <span>Confirmo que toda la información proporcionada es precisa y completa <span class="required">*</span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="confirmTerms" name="confirmTerms" required>
+                                <span>Acepto los términos y condiciones <span class="required">*</span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="wizard-navigation">
+                <button type="button" class="btn-prev" id="prevBtn" style="display: none;">Anterior</button>
+                <button type="button" class="btn-next" id="nextBtn">Siguiente</button>
+                <button type="submit" class="btn-submit" id="submitBtn" style="display: none;">Enviar Solicitud</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/form-wizard.js') }}"></script>
+</body>
+</html>
