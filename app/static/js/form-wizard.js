@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         
         if (!validateStep(currentStep)) {
-            alert('Por favor, complete todos los campos requeridos antes de enviar.');
+            alert('Por favor, complete todos los campos requeridos antes de continuar.');
             return;
         }
 
@@ -403,9 +403,82 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Show loading state
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Enviando...';
+        submitBtn.textContent = 'Procesando...';
 
-        // Submit form
-        form.submit();
+        // Create payment preference
+        createPaymentPreference();
+    }
+
+    function createPaymentPreference() {
+        // Create FormData directly from form
+        const formData = new FormData(form);
+        
+        // Handle array fields (children) properly
+        const childEntries = form.querySelectorAll('[name^="child"]');
+        childEntries.forEach((input, index) => {
+            const name = input.name.replace('[]', '');
+            formData.append(name, input.value);
+        });
+
+        // Send request to create payment preference
+        fetch('/form/create-payment', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Show payment section
+                const paymentSection = document.getElementById('paymentSection');
+                paymentSection.style.display = 'block';
+                
+                // Hide submit button and show payment button
+                submitBtn.style.display = 'none';
+                
+                // Redirect to Mercado Pago checkout
+                const initPoint = data.init_point || data.sandbox_init_point;
+                if (initPoint) {
+                    // Create Mercado Pago button
+                    createMercadoPagoButton(initPoint);
+                    
+                    // Scroll to payment section
+                    paymentSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    alert('Error: No se pudo obtener la URL de pago. Por favor intente nuevamente.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Proceder al Pago';
+                }
+            } else {
+                alert('Error al crear la preferencia de pago: ' + (data.error || 'Error desconocido'));
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Proceder al Pago';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al procesar el pago. Por favor intente nuevamente.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Proceder al Pago';
+        });
+    }
+
+    function createMercadoPagoButton(initPoint) {
+        const mercadoPagoContainer = document.getElementById('mercadoPagoButton');
+        
+        // Create button
+        const payButton = document.createElement('a');
+        payButton.href = initPoint;
+        payButton.className = 'btn-mercado-pago';
+        payButton.innerHTML = `
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 0C8.954 0 0 8.954 0 20s8.954 20 20 20 20-8.954 20-20S31.046 0 20 0z" fill="#009EE3"/>
+                <path d="M20 36c-8.837 0-16-7.163-16-16S11.163 4 20 4s16 7.163 16 16-7.163 16-16 16z" fill="white"/>
+                <path d="M20 10c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10z" fill="#009EE3"/>
+            </svg>
+            <span>Pagar con Mercado Pago</span>
+        `;
+        
+        mercadoPagoContainer.innerHTML = '';
+        mercadoPagoContainer.appendChild(payButton);
     }
 });

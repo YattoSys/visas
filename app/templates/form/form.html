@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <form id="visaForm" class="wizard-form" method="POST" action="{{ url_for('form.submit_form') }}">
+        <form id="visaForm" class="wizard-form" method="POST" action="#">
             <!-- Step 1: Información Personal -->
             <div class="wizard-step active" data-step="1">
                 <h2>Información Personal</h2>
@@ -755,6 +755,32 @@
                             </label>
                         </div>
                     </div>
+                    
+                    <!-- Payment Section -->
+                    <div class="payment-section" id="paymentSection" style="display: none;">
+                        <div class="payment-divider"></div>
+                        <h3>Información de Pago</h3>
+                        <div class="payment-summary">
+                            <div class="payment-item">
+                                <span class="payment-label">Servicio de Formulario DS-160</span>
+                                <span class="payment-amount" id="servicePrice">${{ "%.2f"|format(service_price) }} {{ currency|default('USD') }}</span>
+                            </div>
+                            <div class="payment-total">
+                                <span class="total-label">Total a Pagar:</span>
+                                <span class="total-amount" id="totalAmount">${{ "%.2f"|format(service_price) }} {{ currency|default('USD') }}</span>
+                            </div>
+                        </div>
+                        <p class="payment-description">
+                            Al hacer clic en "Proceder al Pago", serás redirigido a Mercado Pago para completar la transacción de forma segura.
+                        </p>
+                        <div id="mercadoPagoButton" class="mercado-pago-button-container">
+                            <!-- El botón de Mercado Pago se cargará aquí -->
+                        </div>
+                        <div class="payment-security">
+                            <p><strong>🔒 Pago Seguro</strong></p>
+                            <p class="small-text">Todas las transacciones están protegidas y encriptadas. Mercado Pago es nuestro procesador de pagos oficial.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -762,7 +788,7 @@
             <div class="wizard-navigation">
                 <button type="button" class="btn-prev" id="prevBtn" style="display: none;">Anterior</button>
                 <button type="button" class="btn-next" id="nextBtn">Siguiente</button>
-                <button type="submit" class="btn-submit" id="submitBtn" style="display: none;">Enviar Solicitud</button>
+                <button type="button" class="btn-submit" id="submitBtn" style="display: none;">Proceder al Pago</button>
             </div>
         </form>
     </div>

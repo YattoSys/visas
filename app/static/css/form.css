@@ -512,3 +512,234 @@ body {
 .btn-close:hover {
     opacity: 1;
 }
+
+/* Payment Section */
+.payment-section {
+    margin-top: 30px;
+    padding-top: 30px;
+}
+
+.payment-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #667eea 50%, transparent 100%);
+    margin-bottom: 30px;
+}
+
+.payment-section h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.payment-summary {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.payment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.payment-item:last-child {
+    border-bottom: none;
+}
+
+.payment-label {
+    color: #555;
+    font-size: 1em;
+}
+
+.payment-amount {
+    color: #333;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.payment-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin-top: 10px;
+    border-top: 2px solid #667eea;
+}
+
+.total-label {
+    color: #333;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.total-amount {
+    color: #667eea;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.payment-description {
+    color: #666;
+    font-size: 0.95em;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.mercado-pago-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.btn-mercado-pago {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #009EE3 0%, #0070BA 100%);
+    color: white;
+    padding: 18px 40px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 158, 227, 0.3);
+    cursor: pointer;
+}
+
+.btn-mercado-pago:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 158, 227, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-mercado-pago svg {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.btn-mercado-pago span {
+    white-space: nowrap;
+}
+
+.payment-security {
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #4caf50;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.payment-security p {
+    margin: 5px 0;
+    color: #2e7d32;
+}
+
+.payment-security strong {
+    color: #1b5e20;
+}
+
+.payment-security .small-text {
+    font-size: 0.85em;
+    color: #388e3c;
+    margin-top: 10px;
+}
+
+/* Payment Success/Failure Pages */
+.payment-result-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.payment-result-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.payment-result-icon.success {
+    color: #4caf50;
+}
+
+.payment-result-icon.failure {
+    color: #f44336;
+}
+
+.payment-result-icon.pending {
+    color: #ff9800;
+}
+
+.payment-result-title {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.payment-result-message {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.payment-info {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.payment-info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.payment-info-item:last-child {
+    border-bottom: none;
+}
+
+.payment-info-label {
+    color: #666;
+    font-weight: 500;
+}
+
+.payment-info-value {
+    color: #333;
+    font-weight: 600;
+}
+
+.btn-return {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-return:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    color: white;
+    text-decoration: none;
+}
