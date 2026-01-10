@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Exitoso - Tenervisa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+</head>
+<body>
+    <div class="wizard-container">
+        <div class="payment-result-container">
+            <div class="payment-result-icon success">✓</div>
+            <h1 class="payment-result-title">¡Pago Realizado Exitosamente!</h1>
+            <p class="payment-result-message">
+                Su pago ha sido procesado correctamente. Su solicitud de visa está siendo procesada.
+                Recibirá una confirmación por correo electrónico con los detalles de su formulario DS-160.
+            </p>
+            
+            {% if payment_id %}
+            <div class="payment-info">
+                <div class="payment-info-item">
+                    <span class="payment-info-label">ID de Pago:</span>
+                    <span class="payment-info-value">{{ payment_id }}</span>
+                </div>
+                {% if status %}
+                <div class="payment-info-item">
+                    <span class="payment-info-label">Estado:</span>
+                    <span class="payment-info-value">{{ status }}</span>
+                </div>
+                {% endif %}
+                {% if form_data and form_data.get('email') %}
+                <div class="payment-info-item">
+                    <span class="payment-info-label">Correo Electrónico:</span>
+                    <span class="payment-info-value">{{ form_data.get('email') }}</span>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            
+            <p class="payment-result-message" style="margin-top: 30px;">
+                <strong>Próximos pasos:</strong><br>
+                1. Recibirá un correo electrónico con su formulario DS-160 completo<br>
+                2. Revise el formulario cuidadosamente<br>
+                3. Use el número de confirmación para agendar su entrevista en la embajada
+            </p>
+            
+            <a href="{{ url_for('form.display_form') }}" class="btn-return">Volver al Inicio</a>
+        </div>
+    </div>
+</body>
+</html>

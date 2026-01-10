@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago No Procesado - Tenervisa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+</head>
+<body>
+    <div class="wizard-container">
+        <div class="payment-result-container">
+            <div class="payment-result-icon failure">✗</div>
+            <h1 class="payment-result-title">Pago No Procesado</h1>
+            <p class="payment-result-message">
+                Lo sentimos, el pago no pudo ser procesado. Por favor verifique sus datos de pago e intente nuevamente.
+            </p>
+            
+            {% if payment_id %}
+            <div class="payment-info">
+                <div class="payment-info-item">
+                    <span class="payment-info-label">ID de Pago:</span>
+                    <span class="payment-info-value">{{ payment_id }}</span>
+                </div>
+                {% if status %}
+                <div class="payment-info-item">
+                    <span class="payment-info-label">Estado:</span>
+                    <span class="payment-info-value">{{ status }}</span>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            
+            <p class="payment-result-message" style="margin-top: 30px;">
+                <strong>Posibles causas:</strong><br>
+                • Fondos insuficientes<br>
+                • Datos de tarjeta incorrectos<br>
+                • Tarjeta rechazada por el banco<br>
+                • Problema temporal con el procesador de pagos
+            </p>
+            
+            <div style="margin-top: 30px;">
+                <a href="{{ url_for('form.display_form') }}" class="btn-return">Intentar Nuevamente</a>
+            </div>
+            
+            <p style="margin-top: 30px; font-size: 0.9em; color: #666;">
+                Si el problema persiste, por favor contáctenos:<br>
+                <strong>Email:</strong> hola@sitioincreible.mx<br>
+                <strong>Teléfono:</strong> (55) 1234 5656
+            </p>
+        </div>
+    </div>
+</body>
+</html>
