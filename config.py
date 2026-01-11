@@ -10,6 +10,8 @@ class TestingConfig(Config):
 class DevelopmentConfig(Config):
     DEBUG = True
     SECRET_KEY = 'dev-secret-key-change-in-production'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://user:password@localhost/dev_db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     # Mercado Pago Configuration
     # Obtén tus credenciales en: https://www.mercadopago.com/developers/panel/credentials
     MERCADOPAGO_ACCESS_TOKEN = 'TU_ACCESS_TOKEN_AQUI'  # Reemplazar con tu Access Token
