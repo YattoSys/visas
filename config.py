@@ -20,3 +20,7 @@ class DevelopmentConfig(Config):
     SERVICE_PRICE = 100.00
     # Moneda del pago (USD, MXN, ARS, BRL, etc.)
     PAYMENT_CURRENCY = 'USD'
+    # Google reCAPTCHA Configuration
+    # Obtén tus credenciales en: https://www.google.com/recaptcha/admin
+    RECAPTCHA_SITE_KEY = 'TU_SITE_KEY_AQUI'  # Reemplazar con tu Site Key
+    RECAPTCHA_SECRET_KEY = 'TU_SECRET_KEY_AQUI'  # Reemplazar con tu Secret Key

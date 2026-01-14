@@ -6,6 +6,9 @@
     <title>Tenervisa | Formulario de Visa</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+    {% if recaptcha_site_key and recaptcha_site_key != 'TU_SITE_KEY_AQUI' %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {% endif %}
 </head>
 <body>
     <div class="wizard-container">
@@ -755,6 +758,17 @@
                             </label>
                         </div>
                     </div>
+                    
+                    <!-- reCAPTCHA Section -->
+                    {% if recaptcha_site_key and recaptcha_site_key != 'TU_SITE_KEY_AQUI' %}
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Verificación de Seguridad <span class="required">*</span></label>
+                            <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" id="recaptcha"></div>
+                            <small class="recaptcha-error" id="recaptchaError" style="display: none; color: #e74c3c;">Por favor, completa la verificación de seguridad antes de continuar.</small>
+                        </div>
+                    </div>
+                    {% endif %}
                     
                     <!-- Payment Section -->
                     <div class="payment-section" id="paymentSection" style="display: none;">
