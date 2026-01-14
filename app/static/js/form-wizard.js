@@ -401,6 +401,25 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Validate reCAPTCHA (only if it's configured and visible)
+        const recaptchaElement = document.getElementById('recaptcha');
+        if (recaptchaElement && typeof grecaptcha !== 'undefined') {
+            const recaptchaResponse = grecaptcha.getResponse();
+            const recaptchaError = document.getElementById('recaptchaError');
+            
+            if (!recaptchaResponse) {
+                if (recaptchaError) {
+                    recaptchaError.style.display = 'block';
+                }
+                alert('Por favor, completa la verificación de seguridad (reCAPTCHA) antes de continuar.');
+                return;
+            }
+            
+            if (recaptchaError) {
+                recaptchaError.style.display = 'none';
+            }
+        }
+
         // Show loading state
         submitBtn.disabled = true;
         submitBtn.textContent = 'Procesando...';
@@ -419,6 +438,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = input.name.replace('[]', '');
             formData.append(name, input.value);
         });
+
+        // Ensure reCAPTCHA token is included (if reCAPTCHA is configured)
+        if (typeof grecaptcha !== 'undefined') {
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (recaptchaResponse) {
+                formData.append('g-recaptcha-response', recaptchaResponse);
+            }
+        }
 
         // Send request to create payment preference
         fetch('/form/create-payment', {
@@ -449,7 +476,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitBtn.textContent = 'Proceder al Pago';
                 }
             } else {
-                alert('Error al crear la preferencia de pago: ' + (data.error || 'Error desconocido'));
+                const errorMsg = data.error || 'Error desconocido';
+                alert('Error al crear la preferencia de pago: ' + errorMsg);
+                
+                // Reset reCAPTCHA if error is related to captcha
+                if (errorMsg.toLowerCase().includes('captcha') || errorMsg.toLowerCase().includes('seguridad')) {
+                    grecaptcha.reset();
+                    const recaptchaError = document.getElementById('recaptchaError');
+                    recaptchaError.style.display = 'block';
+                }
+                
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Proceder al Pago';
             }
@@ -457,6 +493,12 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error:', error);
             alert('Error al procesar el pago. Por favor intente nuevamente.');
+            
+            // Reset reCAPTCHA on error
+            if (typeof grecaptcha !== 'undefined') {
+                grecaptcha.reset();
+            }
+            
             submitBtn.disabled = false;
             submitBtn.textContent = 'Proceder al Pago';
         });

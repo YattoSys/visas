@@ -1,18 +1,48 @@
 from flask import render_template, request, redirect, url_for, flash, jsonify, session, current_app
 from .routes import form
 import mercadopago
+import requests
 
 @form.route('/form')
 def display_form():
     service_price = current_app.config.get('SERVICE_PRICE', 100.00)
     currency = current_app.config.get('PAYMENT_CURRENCY', 'USD')
-    return render_template('/form/form.html', service_price=service_price, currency=currency)
+    recaptcha_site_key = current_app.config.get('RECAPTCHA_SITE_KEY', '')
+    return render_template('/form/form.html', 
+                         service_price=service_price, 
+                         currency=currency,
+                         recaptcha_site_key=recaptcha_site_key)
 
 @form.route('/form/create-payment', methods=['POST'])
 def create_payment():
     try:
         # Get all form data
         form_data = request.form.to_dict()
+        
+        # Validate reCAPTCHA
+        recaptcha_response = request.form.get('g-recaptcha-response')
+        recaptcha_secret = current_app.config.get('RECAPTCHA_SECRET_KEY')
+        
+        if recaptcha_secret and recaptcha_secret != 'TU_SECRET_KEY_AQUI':
+            if not recaptcha_response:
+                return jsonify({'error': 'Por favor, completa la verificación de seguridad (reCAPTCHA).'}), 400
+            
+            # Verify reCAPTCHA with Google
+            verify_url = 'https://www.google.com/recaptcha/api/siteverify'
+            verify_data = {
+                'secret': recaptcha_secret,
+                'response': recaptcha_response,
+                'remoteip': request.remote_addr
+            }
+            
+            verify_response = requests.post(verify_url, data=verify_data, timeout=5)
+            verify_result = verify_response.json()
+            
+            if not verify_result.get('success', False):
+                return jsonify({'error': 'La verificación de seguridad falló. Por favor inténtalo nuevamente.'}), 400
+        else:
+            # If reCAPTCHA is not configured, log a warning but allow the request
+            current_app.logger.warning('reCAPTCHA no configurado. Saltando validación.')
         
         # Store form data in session for later use
         session['form_data'] = form_data

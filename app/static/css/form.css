@@ -743,3 +743,28 @@ body {
     color: white;
     text-decoration: none;
 }
+
+/* reCAPTCHA Styles */
+.g-recaptcha {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.recaptcha-error {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9em;
+    padding: 10px;
+    background-color: #fee;
+    border-left: 3px solid #e74c3c;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .g-recaptcha {
+        transform: scale(0.77);
+        transform-origin: 0 0;
+        margin-left: -10px;
+    }
+}
