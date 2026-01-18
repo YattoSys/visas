@@ -452,7 +452,37 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
+        .then(async response => {
+            // Check if response is JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                // If not JSON, get text to see what the error is
+                const text = await response.text();
+                console.error('Non-JSON response:', text);
+                
+                // Try to extract error message from HTML if it's an error page
+                let errorMessage = 'El servidor devolvió una respuesta no válida.';
+                if (text.includes('error') || text.includes('Error')) {
+                    const errorMatch = text.match(/<title[^>]*>([^<]+)<\/title>/i) || 
+                                      text.match(/<h1[^>]*>([^<]+)<\/h1>/i) ||
+                                      text.match(/Error[^<]*/i);
+                    if (errorMatch) {
+                        errorMessage = errorMatch[1] || errorMatch[0];
+                    }
+                }
+                
+                throw new Error(errorMessage + ' Por favor intente nuevamente.');
+            }
+            
+            // Check if response is ok
+            if (!response.ok) {
+                // Try to parse JSON error
+                const errorData = await response.json().catch(() => ({ error: `Error ${response.status}: ${response.statusText}` }));
+                throw new Error(errorData.error || `Error ${response.status}`);
+            }
+            
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
                 // Show payment section
@@ -480,10 +510,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Error al crear la preferencia de pago: ' + errorMsg);
                 
                 // Reset reCAPTCHA if error is related to captcha
-                if (errorMsg.toLowerCase().includes('captcha') || errorMsg.toLowerCase().includes('seguridad')) {
+                if (typeof grecaptcha !== 'undefined' && 
+                    (errorMsg.toLowerCase().includes('captcha') || errorMsg.toLowerCase().includes('seguridad'))) {
                     grecaptcha.reset();
                     const recaptchaError = document.getElementById('recaptchaError');
-                    recaptchaError.style.display = 'block';
+                    if (recaptchaError) {
+                        recaptchaError.style.display = 'block';
+                    }
                 }
                 
                 submitBtn.disabled = false;
@@ -491,8 +524,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => {
-            console.error('Error:', error);
-            alert('Error al procesar el pago. Por favor intente nuevamente.');
+            console.error('Error creating payment preference:', error);
+            
+            let errorMessage = 'Error al procesar el pago. Por favor intente nuevamente.';
+            if (error.message) {
+                errorMessage = error.message;
+            }
+            
+            alert(errorMessage);
             
             // Reset reCAPTCHA on error
             if (typeof grecaptcha !== 'undefined') {

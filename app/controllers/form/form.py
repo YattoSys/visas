@@ -28,18 +28,28 @@ def create_payment():
                 return jsonify({'error': 'Por favor, completa la verificación de seguridad (reCAPTCHA).'}), 400
             
             # Verify reCAPTCHA with Google
-            verify_url = 'https://www.google.com/recaptcha/api/siteverify'
-            verify_data = {
-                'secret': recaptcha_secret,
-                'response': recaptcha_response,
-                'remoteip': request.remote_addr
-            }
-            
-            verify_response = requests.post(verify_url, data=verify_data, timeout=5)
-            verify_result = verify_response.json()
-            
-            if not verify_result.get('success', False):
-                return jsonify({'error': 'La verificación de seguridad falló. Por favor inténtalo nuevamente.'}), 400
+            try:
+                verify_url = 'https://www.google.com/recaptcha/api/siteverify'
+                verify_data = {
+                    'secret': recaptcha_secret,
+                    'response': recaptcha_response,
+                    'remoteip': request.remote_addr
+                }
+                
+                verify_response = requests.post(verify_url, data=verify_data, timeout=5)
+                verify_response.raise_for_status()  # Raise an exception for bad status codes
+                verify_result = verify_response.json()
+                
+                if not verify_result.get('success', False):
+                    error_codes = verify_result.get('error-codes', [])
+                    current_app.logger.warning(f"reCAPTCHA verification failed: {error_codes}")
+                    return jsonify({'error': 'La verificación de seguridad falló. Por favor inténtalo nuevamente.'}), 400
+            except requests.exceptions.RequestException as e:
+                current_app.logger.error(f"Error verifying reCAPTCHA: {str(e)}")
+                return jsonify({'error': 'Error al verificar la seguridad. Por favor inténtalo nuevamente.'}), 500
+            except ValueError as e:
+                current_app.logger.error(f"Error parsing reCAPTCHA response: {str(e)}")
+                return jsonify({'error': 'Error al procesar la verificación de seguridad.'}), 500
         else:
             # If reCAPTCHA is not configured, log a warning but allow the request
             current_app.logger.warning('reCAPTCHA no configurado. Saltando validación.')
@@ -93,12 +103,25 @@ def create_payment():
         }
         
         # Create preference
-        preference_response = sdk.preference().create(preference_data)
+        try:
+            preference_response = sdk.preference().create(preference_data)
+        except Exception as mp_error:
+            current_app.logger.error(f"Mercado Pago SDK error: {str(mp_error)}")
+            return jsonify({'error': f'Error al comunicarse con Mercado Pago: {str(mp_error)}'}), 500
+        
+        # Check if response is valid
+        if not preference_response or 'status' not in preference_response:
+            current_app.logger.error(f"Invalid response from Mercado Pago: {preference_response}")
+            return jsonify({'error': 'Respuesta inválida de Mercado Pago'}), 500
         
         if preference_response['status'] in [200, 201]:
-            preference = preference_response['response']
+            preference = preference_response.get('response', {})
             preference_id = preference.get('id')
             init_point = preference.get('init_point')
+            
+            if not preference_id:
+                current_app.logger.error(f"No preference ID in response: {preference}")
+                return jsonify({'error': 'No se pudo obtener el ID de preferencia de Mercado Pago'}), 500
             
             # Store preference ID in session
             session['preference_id'] = preference_id
@@ -108,15 +131,16 @@ def create_payment():
                 'preference_id': preference_id,
                 'init_point': init_point,
                 'sandbox_init_point': preference.get('sandbox_init_point')
-            })
+            }), 200
         else:
-            flash('Error al crear la preferencia de pago. Por favor intente nuevamente.', 'error')
-            return jsonify({'error': 'Error al crear preferencia'}), 400
+            error_message = preference_response.get('response', {}).get('message', 'Error desconocido')
+            current_app.logger.error(f"Mercado Pago error: Status {preference_response['status']}, Message: {error_message}")
+            return jsonify({'error': f'Error al crear preferencia: {error_message}'}), 400
             
     except Exception as e:
-        current_app.logger.error(f"Error creating payment preference: {str(e)}")
-        flash(f'Error al procesar el pago: {str(e)}', 'error')
-        return jsonify({'error': str(e)}), 500
+        current_app.logger.error(f"Error creating payment preference: {str(e)}", exc_info=True)
+        # Ensure we always return JSON, even on unexpected errors
+        return jsonify({'error': f'Error al procesar el pago: {str(e)}'}), 500
 
 @form.route('/form/payment/success')
 def payment_success():

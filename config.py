@@ -1,5 +1,7 @@
 class Config:
-    pass
+    DEBUG = False
+    TESTING = False
+    SECRET_KEY = 'K1R1T08312'
 
 class ProductionConfig(Config):
     pass
