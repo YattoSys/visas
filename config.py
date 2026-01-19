@@ -7,7 +7,8 @@ class ProductionConfig(Config):
     pass
 
 class TestingConfig(Config):
-    pass
+    TESTING = True
+    DEBUG = True
 
 class DevelopmentConfig(Config):
     DEBUG = True
