@@ -97,14 +97,41 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="middleName">Segundo Nombre (si aplica)</label>
+                            <label for="middleName">Full name in Native Alphabet</label>
                             <input type="text" id="middleName" name="middleName">
                         </div>
                         <div class="form-group">
-                            <label for="otherNames">Otros nombres utilizados (alias, nombres artísticos, etc.)</label>
+                            <label for="otherNames">Have you used other names?</label>
                             <input type="text" id="otherNames" name="otherNames">
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telcode">Do you have a telcode that represents your name</label>
+                            <input type="text" id="telcode" name="telcode">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="maritalStatus">Estado Civil <span class="required">*</span></label>
+                            <select id="maritalStatus" name="maritalStatus" required>
+                                <option value="">Seleccione</option>
+                                <option value="single">Soltero(a)</option>
+                                <option value="married">Casado(a)</option>
+                                <option value="divorced">Divorciado(a)</option>
+                                <option value="widowed">Viudo(a)</option>
+                                <option value="separated">Separado(a)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                        <label for="gender">Género <span class="required">*</span></label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Seleccione</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </div>
+                    </div>  
                     <div class="form-row">
                         <div class="form-group">
                             <label for="dateOfBirth">Fecha de Nacimiento <span class="required">*</span></label>
@@ -142,28 +169,6 @@
                                 <option value="CO">Colombia</option>
                                 <option value="PE">Perú</option>
                                 <option value="CL">Chile</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="gender">Género <span class="required">*</span></label>
-                            <select id="gender" name="gender" required>
-                                <option value="">Seleccione</option>
-                                <option value="M">Masculino</option>
-                                <option value="F">Femenino</option>
-                                <option value="O">Otro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="maritalStatus">Estado Civil <span class="required">*</span></label>
-                            <select id="maritalStatus" name="maritalStatus" required>
-                                <option value="">Seleccione</option>
-                                <option value="single">Soltero(a)</option>
-                                <option value="married">Casado(a)</option>
-                                <option value="divorced">Divorciado(a)</option>
-                                <option value="widowed">Viudo(a)</option>
-                                <option value="separated">Separado(a)</option>
                             </select>
                         </div>
                     </div>
