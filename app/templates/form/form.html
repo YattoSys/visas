@@ -83,7 +83,7 @@
         <form id="visaForm" class="wizard-form" method="POST" action="#">
             <!-- Step 1: Personal Information -->
             <div class="wizard-step active" data-step="1">
-                <h2>Personal Inforation</h2>
+                <h2>Personal Information</h2>
                 <div class="form-section">
                     <div class="form-row">
                         <div class="form-group">
@@ -116,11 +116,13 @@
                             <label for="maritalStatus">Estado Civil <span class="required">*</span></label>
                             <select id="maritalStatus" name="maritalStatus" required>
                                 <option value="">Seleccione</option>
-                                <option value="single">Soltero(a)</option>
-                                <option value="married">Casado(a)</option>
-                                <option value="divorced">Divorciado(a)</option>
-                                <option value="widowed">Viudo(a)</option>
-                                <option value="separated">Separado(a)</option>
+                                <option value="single">Married)</option>
+                                <option value="married">Common Law Married</option>
+                                <option value="divorced">Civil Union/Domestic Parthership</option>
+                                <option value="widowed">Single</option>
+                                <option value="separated">Widowen</option>
+                                <option value="">Divorced</option>
+                                <option value="">Legally separated</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -161,6 +163,25 @@
                             <label for="nationality">Nacionalidad <span class="required">*</span></label>
                             <select id="nationality" name="nationality" required>
                                 <option value="">Seleccione una nacionalidad</option>
+                                <option value="MX">México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="CA">Canadá</option>
+                                <option value="ES">España</option>
+                                <option value="AR">Argentina</option>
+                                <option value="CO">Colombia</option>
+                                <option value="PE">Perú</option>
+                                <option value="CL">Chile</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <h2>Personal Information 2</h2>
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="countryOfBirth">País de Nacimiento <span class="required">*</span></label>
+                            <select id="countryOfBirth" name="countryOfBirth" required>
+                                <option value="">Seleccione un país</option>
                                 <option value="MX">México</option>
                                 <option value="US">Estados Unidos</option>
                                 <option value="CA">Canadá</option>
