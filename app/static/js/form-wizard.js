@@ -60,6 +60,176 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
+        // Step 1: Other nationality - show dropdown when Yes
+        const otherNationalityRadios = document.querySelectorAll('input[name="otherNationality"]');
+        const otherNationalityDetails = document.getElementById('otherNationalityDetails');
+        if (otherNationalityDetails) {
+            otherNationalityRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        otherNationalityDetails.style.display = 'block';
+                    } else {
+                        otherNationalityDetails.style.display = 'none';
+                        const sel = document.getElementById('otherNationalityCountry');
+                        if (sel) sel.value = '';
+                    }
+                });
+            });
+        }
+
+        // Step 1: Permanent resident other country - show dropdown when Yes
+        const permanentResidentOtherRadios = document.querySelectorAll('input[name="permanentResidentOther"]');
+        const permanentResidentOtherDetails = document.getElementById('permanentResidentOtherDetails');
+        if (permanentResidentOtherDetails) {
+            permanentResidentOtherRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        permanentResidentOtherDetails.style.display = 'block';
+                    } else {
+                        permanentResidentOtherDetails.style.display = 'none';
+                        const sel = document.getElementById('permanentResidentCountry');
+                        if (sel) sel.value = '';
+                    }
+                });
+            });
+        }
+
+        // Specific travel plans details (Step 2: Travel)
+        const specificTravelPlansRadios = document.querySelectorAll('input[name="specificTravelPlans"]');
+        const specificTravelPlansDetails = document.getElementById('specificTravelPlansDetails');
+
+        if (specificTravelPlansDetails) {
+            specificTravelPlansRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        specificTravelPlansDetails.style.display = 'block';
+                    } else {
+                        specificTravelPlansDetails.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Radio buttons for step 3 (Travel Companions): show second question when "Yes"
+        const otherPersonsRadios = document.querySelectorAll('input[name="otherPersons"]');
+        const otherPersonsDetails = document.getElementById('otherPersonsDetails');
+
+        // Sync visibility of group name vs companion fields based on second question (travelingGroup)
+        function syncTravelingGroupVisibility() {
+            const travelingGroupNameDetailsEl = document.getElementById('travelingGroupNameDetails');
+            const travelingCompanionPersonDetailsEl = document.getElementById('travelingCompanionPersonDetails');
+            const groupYes = document.querySelector('input[name="travelingGroup"][value="yes"]');
+            if (!travelingGroupNameDetailsEl || !travelingCompanionPersonDetailsEl) return;
+            if (groupYes && groupYes.checked) {
+                travelingGroupNameDetailsEl.style.display = 'block';
+                travelingCompanionPersonDetailsEl.style.display = 'none';
+            } else {
+                travelingGroupNameDetailsEl.style.display = 'none';
+                travelingCompanionPersonDetailsEl.style.display = 'block';
+            }
+        }
+
+        if (otherPersonsDetails) {
+            const travelingGroupNameDetailsEl = document.getElementById('travelingGroupNameDetails');
+            const travelingCompanionPersonDetailsEl = document.getElementById('travelingCompanionPersonDetails');
+            otherPersonsRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        otherPersonsDetails.style.display = 'block';
+                        syncTravelingGroupVisibility();
+                    } else {
+                        otherPersonsDetails.style.display = 'none';
+                        if (travelingGroupNameDetailsEl) travelingGroupNameDetailsEl.style.display = 'none';
+                        if (travelingCompanionPersonDetailsEl) travelingCompanionPersonDetailsEl.style.display = 'none';
+                        const nameOfGroupInput = document.getElementById('nameOfGroup');
+                        if (nameOfGroupInput) nameOfGroupInput.value = '';
+                        clearCompanionEntries();
+                    }
+                });
+            });
+        }
+
+        // Step 3: "Yes" on group → show Name of group; "No" on group → show Surnames, Given Names, Relationship
+        const travelingGroupRadios = document.querySelectorAll('input[name="travelingGroup"]');
+        const travelingGroupNameDetails = document.getElementById('travelingGroupNameDetails');
+        const travelingCompanionPersonDetails = document.getElementById('travelingCompanionPersonDetails');
+
+        if (travelingGroupRadios.length) {
+            travelingGroupRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        if (travelingGroupNameDetails) travelingGroupNameDetails.style.display = 'block';
+                        if (travelingCompanionPersonDetails) travelingCompanionPersonDetails.style.display = 'none';
+                        clearCompanionEntries();
+                    } else {
+                        if (travelingGroupNameDetails) travelingGroupNameDetails.style.display = 'none';
+                        const nameOfGroupInput = document.getElementById('nameOfGroup');
+                        if (nameOfGroupInput) nameOfGroupInput.value = '';
+                        if (travelingCompanionPersonDetails) travelingCompanionPersonDetails.style.display = 'block';
+                    }
+                });
+            });
+        }
+
+        // Add Another / Remove for travel companions
+        function clearCompanionEntries() {
+            const container = document.getElementById('companionEntries');
+            if (!container) return;
+            const entries = container.querySelectorAll('.companion-entry');
+            entries.forEach((entry, index) => {
+                if (index === 0) {
+                    entry.querySelectorAll('input, select').forEach(field => { field.value = ''; });
+                } else {
+                    entry.remove();
+                }
+            });
+        }
+
+        const addCompanionBtn = document.getElementById('addCompanionBtn');
+        const removeCompanionBtn = document.getElementById('removeCompanionBtn');
+        if (addCompanionBtn) {
+            addCompanionBtn.addEventListener('click', function() {
+                const container = document.getElementById('companionEntries');
+                if (!container) return;
+                const count = container.querySelectorAll('.companion-entry').length;
+                const newEntry = document.createElement('div');
+                newEntry.className = 'companion-entry form-row';
+                newEntry.innerHTML = `
+                    <div class="form-group">
+                        <label for="companionSurnames_${count}">Surnames of Person Traveling With You</label>
+                        <input type="text" id="companionSurnames_${count}" name="companionSurnames[]">
+                    </div>
+                    <div class="form-group">
+                        <label for="companionGivenNames_${count}">Given Names of Person Traveling With You</label>
+                        <input type="text" id="companionGivenNames_${count}" name="companionGivenNames[]">
+                    </div>
+                    <div class="form-group">
+                        <label for="companionRelationship_${count}">Relationship with Person</label>
+                        <select id="companionRelationship_${count}" name="companionRelationship[]">
+                            <option value="">- SELECT ONE -</option>
+                            <option value="spouse">Spouse</option>
+                            <option value="child">Child</option>
+                            <option value="parent">Parent</option>
+                            <option value="sibling">Sibling</option>
+                            <option value="friend">Friend</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                `;
+                container.appendChild(newEntry);
+            });
+        }
+        if (removeCompanionBtn) {
+            removeCompanionBtn.addEventListener('click', function() {
+                const container = document.getElementById('companionEntries');
+                if (!container) return;
+                const entries = container.querySelectorAll('.companion-entry');
+                if (entries.length > 1) {
+                    entries[entries.length - 1].remove();
+                }
+            });
+        }
+
         // Spouse info
         const isMarriedRadios = document.querySelectorAll('input[name="isMarried"]');
         const spouseInfo = document.getElementById('spouseInfo');
@@ -210,19 +380,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Validate date ranges
-        if (step === 2) {
-            const issueDate = document.getElementById('passportIssueDate').value;
-            const expiryDate = document.getElementById('passportExpiryDate').value;
+        // Validate passport date range (solo si los campos existen en el formulario)
+        const passportIssueEl = document.getElementById('passportIssueDate');
+        const passportExpiryEl = document.getElementById('passportExpiryDate');
+        if (passportIssueEl && passportExpiryEl && currentStepElement.contains(passportIssueEl)) {
+            const issueDate = passportIssueEl.value;
+            const expiryDate = passportExpiryEl.value;
             if (issueDate && expiryDate && new Date(expiryDate) <= new Date(issueDate)) {
                 isValid = false;
                 alert('La fecha de vencimiento debe ser posterior a la fecha de emisión.');
             }
         }
 
-        if (step === 3) {
-            const arrivalDate = document.getElementById('intendedArrivalDate').value;
-            const departureDate = document.getElementById('intendedDepartureDate').value;
+        // Validate travel date range (solo si los campos existen en el paso actual)
+        const intendedArrivalEl = document.getElementById('intendedArrivalDate');
+        const intendedDepartureEl = document.getElementById('intendedDepartureDate');
+        if (intendedArrivalEl && intendedDepartureEl && currentStepElement.contains(intendedArrivalEl)) {
+            const arrivalDate = intendedArrivalEl.value;
+            const departureDate = intendedDepartureEl.value;
             if (arrivalDate && departureDate && new Date(departureDate) <= new Date(arrivalDate)) {
                 isValid = false;
                 alert('La fecha de salida debe ser posterior a la fecha de llegada.');
