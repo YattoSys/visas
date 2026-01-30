@@ -192,33 +192,47 @@
                                 <option value="CL">Chile</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="contry-2s"> Do you hold or have you held any nationality other than the one indicated above on nationality? </label>
-                            <select id="countryOfBirth" name="countryOfBirth" required>
-                                <option value="">Seleccione un país</option>
-                                <option value="MX">México</option>
-                                <option value="US">Estados Unidos</option>
-                                <option value="CA">Canadá</option>
-                                <option value="ES">España</option>
-                                <option value="AR">Argentina</option>
-                                <option value="CO">Colombia</option>
-                                <option value="PE">Perú</option>
-                                <option value="CL">Chile</option>
-                            </select>
+                        <div class="form-group full-width">
+                            <label>Do you hold or have you held any nationality other than the one indicated above on nationality?</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="otherNationality" value="yes"> Yes</label>
+                                <label><input type="radio" name="otherNationality" value="no" checked> No</label>
+                            </div>
+                            <div id="otherNationalityDetails" style="display: none; margin-top: 12px;">
+                                <label for="otherNationalityCountry">Select country</label>
+                                <select id="otherNationalityCountry" name="otherNationalityCountry">
+                                    <option value="">Seleccione un país</option>
+                                    <option value="MX">México</option>
+                                    <option value="US">Estados Unidos</option>
+                                    <option value="CA">Canadá</option>
+                                    <option value="ES">España</option>
+                                    <option value="AR">Argentina</option>
+                                    <option value="CO">Colombia</option>
+                                    <option value="PE">Perú</option>
+                                    <option value="CL">Chile</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="second-nationality">Are you a permanent resident of a country/region other than your country/region of origin (nationality) indicated above? </label>
-                            <select id="countryOfBirth" name="countryOfBirth" required>
-                                <option value="">Seleccione un país</option>
-                                <option value="MX">México</option>
-                                <option value="US">Estados Unidos</option>
-                                <option value="CA">Canadá</option>
-                                <option value="ES">España</option>
-                                <option value="AR">Argentina</option>
-                                <option value="CO">Colombia</option>
-                                <option value="PE">Perú</option>
-                                <option value="CL">Chile</option>
-                            </select>
+                        <div class="form-group full-width">
+                            <label>Are you a permanent resident of a country/region other than your country/region of origin (nationality) indicated above?</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="permanentResidentOther" value="yes"> Yes</label>
+                                <label><input type="radio" name="permanentResidentOther" value="no" checked> No</label>
+                            </div>
+                            <div id="permanentResidentOtherDetails" style="display: none; margin-top: 12px;">
+                                <label for="permanentResidentCountry">Select country</label>
+                                <select id="permanentResidentCountry" name="permanentResidentCountry">
+                                    <option value="">Seleccione un país</option>
+                                    <option value="MX">México</option>
+                                    <option value="US">Estados Unidos</option>
+                                    <option value="CA">Canadá</option>
+                                    <option value="ES">España</option>
+                                    <option value="AR">Argentina</option>
+                                    <option value="CO">Colombia</option>
+                                    <option value="PE">Perú</option>
+                                    <option value="CL">Chile</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -229,8 +243,6 @@
                         <div class="form-group">
                             <label for="ssn">U.S. Social Security Number</label>
                             <input type="text" id="ssn" name="ssn">
-                            <input type="text">
-                            <input type="text">
                         </div>
                         <div class="form-group">
                             <label for="tin">U.S. Taxpayer ID Number</label>
@@ -240,144 +252,139 @@
                 </div>
             </div>
 
-            <!-- Step 2: Información de Pasaporte -->
+            <!-- Step 2: Travel -->
             <div class="wizard-step" data-step="2">
-                <h2>Información de Pasaporte</h2>
+                <h2>Travel</h2>
                 <div class="form-section">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="passportNumber">Número de Pasaporte <span class="required">*</span></label>
-                            <input type="text" id="passportNumber" name="passportNumber" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="passportIssuingCountry">País Emisor del Pasaporte <span class="required">*</span></label>
-                            <select id="passportIssuingCountry" name="passportIssuingCountry" required>
-                                <option value="">Seleccione un país</option>
-                                <option value="MX">México</option>
-                                <option value="US">Estados Unidos</option>
-                                <option value="CA">Canadá</option>
-                                <option value="ES">España</option>
-                                <option value="AR">Argentina</option>
-                                <option value="CO">Colombia</option>
-                                <option value="PE">Perú</option>
-                                <option value="CL">Chile</option>
+                            <label for="purposeoftrip">Purpose of Trip to the U.S.</label>
+                            <select name="purposeoftrip" id="purposeoftrip">
+                                <option value="a">Foreign Government Official (A)</option>
+                                <option value="b">Temp. Buisness or pleasure</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group">
-                            <label for="passportIssueDate">Fecha de Emisión <span class="required">*</span></label>
-                            <input type="date" id="passportIssueDate" name="passportIssueDate" required>
+                            <label for="purposeoftrip">Purpose of Trip to the U.S.</label>
+                            <select name="purposeoftrip" id="purposeoftrip">
+                                <option value="b1/b2">Buisness or Tourism</option>
+                                <option value="b1">Buisness</option>
+                                <option value="b2">Tourism/Medical</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label for="passportExpiryDate">Fecha de Vencimiento <span class="required">*</span></label>
-                            <input type="date" id="passportExpiryDate" name="passportExpiryDate" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="passportCityOfIssue">Ciudad de Emisión <span class="required">*</span></label>
-                            <input type="text" id="passportCityOfIssue" name="passportCityOfIssue" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="passportIssuingAuthority">Autoridad Emisora <span class="required">*</span></label>
-                            <input type="text" id="passportIssuingAuthority" name="passportIssuingAuthority" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group full-width">
-                            <label>¿Ha perdido o le han robado un pasaporte? <span class="required">*</span></label>
+                            <label>Have you made specific travel plans?</label>
                             <div class="radio-group">
-                                <label><input type="radio" name="lostPassport" value="yes" required> Sí</label>
-                                <label><input type="radio" name="lostPassport" value="no" required> No</label>
+                                <label><input type="radio" name="specificTravelPlans" id="specificTravelPlansYes" value="yes"> Yes</label>
+                                <label><input type="radio" name="specificTravelPlans" id="specificTravelPlansNo" value="no"> No</label>
                             </div>
                         </div>
                     </div>
-                    <div class="form-row" id="lostPassportDetails" style="display: none;">
-                        <div class="form-group full-width">
-                            <label for="lostPassportExplanation">Explique los detalles</label>
-                            <textarea id="lostPassportExplanation" name="lostPassportExplanation" rows="3"></textarea>
+                    <div id="specificTravelPlansDetails" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="travelPlansArrivalDate">Intended Date of Arrival in the U.S.</label>
+                                <input type="date" id="travelPlansArrivalDate" name="travelPlansArrivalDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="travelPlansDepartureDate">Intended Date of Departure from the U.S.</label>
+                                <input type="date" id="travelPlansDepartureDate" name="travelPlansDepartureDate">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="travelPlansAddress">Address Where You Will Stay in the U.S.</label>
+                                <input type="text" id="travelPlansAddress" name="travelPlansAddress" placeholder="Hotel, host, or full address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="travelplans">Intended date of Arrival</label>
+                            <input type="date" id="travelplans" name="travelplans">
+                        </div>
+                        <div class="form-group">
+                            <label for="lengthstay">Intended length of stay in U.S.</label>
+                            <div class="input-select-row">
+                                <input type="text" id="lengthstay" name="lengthstay" class="input-narrow">
+                                <select name="lengthstayunit" id="lengthstayunit">
+                                    <option value="years">Years</option>
+                                    <option value="months">Months</option>
+                                    <option value="weeks">Weeks</option>
+                                    <option value="days">Days</option>
+                                    <option value="less">Less than 24 hours</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="payingforyourtrip">Person/Entity paying for your trip</label>
+                            <select name="payingforyourtrip" id="payingforyourtrip">
+                                <option value="self">Self</option>
+                                <option value="other">Other Person</option>
+                                <option value="pemployer">Present Employer</option>
+                                <option value="euemployer">Employer in U.S.</option>
+                                <option value="org">Other Company/Organization</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Step 3: Información de Viaje -->
+            <!-- Step 3: Travel Companions -->
             <div class="wizard-step" data-step="3">
-                <h2>Información de Viaje</h2>
+                <h2>Travel Companions Information</h2>
                 <div class="form-section">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="travelPurpose">Propósito del Viaje <span class="required">*</span></label>
-                            <select id="travelPurpose" name="travelPurpose" required>
-                                <option value="">Seleccione</option>
-                                <option value="tourism">Turismo</option>
-                                <option value="business">Negocios</option>
-                                <option value="study">Estudios</option>
-                                <option value="work">Trabajo</option>
-                                <option value="transit">Tránsito</option>
-                                <option value="medical">Tratamiento médico</option>
-                                <option value="other">Otro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="intendedArrivalDate">Fecha Prevista de Llegada <span class="required">*</span></label>
-                            <input type="date" id="intendedArrivalDate" name="intendedArrivalDate" required>
+                    <h3 class="section-subtitle">Persons traveling with you</h3>
+                    <div class="form-group full-width">
+                        <label>Q: Are there other persons traveling with you?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" id="otherPersonsYes" name="otherPersons" value="yes"> A: Yes</label>
+                            <label><input type="radio" id="otherPersonsNo" name="otherPersons" value="no" checked> No</label>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="intendedDepartureDate">Fecha Prevista de Salida <span class="required">*</span></label>
-                            <input type="date" id="intendedDepartureDate" name="intendedDepartureDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="durationOfStay">Duración Estimada de la Estadía (días) <span class="required">*</span></label>
-                            <input type="number" id="durationOfStay" name="durationOfStay" min="1" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="destinationCountry">País de Destino <span class="required">*</span></label>
-                            <select id="destinationCountry" name="destinationCountry" required>
-                                <option value="">Seleccione un país</option>
-                                <option value="US">Estados Unidos</option>
-                                <option value="CA">Canadá</option>
-                                <option value="ES">España</option>
-                                <option value="UK">Reino Unido</option>
-                                <option value="FR">Francia</option>
-                                <option value="DE">Alemania</option>
-                                <option value="IT">Italia</option>
-                                <option value="AU">Australia</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="destinationCity">Ciudad de Destino <span class="required">*</span></label>
-                            <input type="text" id="destinationCity" name="destinationCity" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
+                    <div id="otherPersonsDetails" style="display: none;">
                         <div class="form-group full-width">
-                            <label>¿Ha visitado este país anteriormente? <span class="required">*</span></label>
+                            <label>Q: Are you traveling as part of a group or organization?</label>
                             <div class="radio-group">
-                                <label><input type="radio" name="previousVisit" value="yes" required> Sí</label>
-                                <label><input type="radio" name="previousVisit" value="no" required> No</label>
+                                <label><input type="radio" name="travelingGroup" value="yes"> A: Yes</label>
+                                <label><input type="radio" name="travelingGroup" value="no" checked> No</label>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row" id="previousVisitDetails" style="display: none;">
-                        <div class="form-group">
-                            <label for="previousVisitDate">Fecha de la última visita</label>
-                            <input type="date" id="previousVisitDate" name="previousVisitDate">
+                        <div id="travelingGroupNameDetails" style="display: none;">
+                            <div class="form-group full-width">
+                                <label for="nameOfGroup">Name of group</label>
+                                <input type="text" id="nameOfGroup" name="nameOfGroup" placeholder="Enter group or organization name">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="previousVisitDuration">Duración de la última visita (días)</label>
-                            <input type="number" id="previousVisitDuration" name="previousVisitDuration" min="1">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label for="accommodationDetails">Detalles de Alojamiento <span class="required">*</span></label>
-                            <textarea id="accommodationDetails" name="accommodationDetails" rows="3" placeholder="Dirección del hotel, dirección de amigos/familiares, etc." required></textarea>
+                        <div id="travelingCompanionPersonDetails" style="display: none;">
+                            <div class="companion-entries" id="companionEntries">
+                                <div class="companion-entry form-row">
+                                    <div class="form-group">
+                                        <label for="companionSurnames_0">Surnames of Person Traveling With You</label>
+                                        <input type="text" id="companionSurnames_0" name="companionSurnames[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="companionGivenNames_0">Given Names of Person Traveling With You</label>
+                                        <input type="text" id="companionGivenNames_0" name="companionGivenNames[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="companionRelationship_0">Relationship with Person</label>
+                                        <select id="companionRelationship_0" name="companionRelationship[]">
+                                            <option value="">- SELECT ONE -</option>
+                                            <option value="spouse">Spouse</option>
+                                            <option value="child">Child</option>
+                                            <option value="parent">Parent</option>
+                                            <option value="sibling">Sibling</option>
+                                            <option value="friend">Friend</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="companion-actions">
+                                <button type="button" class="btn-link btn-add-companion" id="addCompanionBtn">+ Add Another</button>
+                                <button type="button" class="btn-link btn-remove-companion" id="removeCompanionBtn">Remove</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -385,102 +392,13 @@
 
             <!-- Step 4: Información de Contacto -->
             <div class="wizard-step" data-step="4">
-                <h2>Información de Contacto</h2>
+                <h2>Previous U.S. Travel</h2>
                 <div class="form-section">
-                    <h3>Dirección Actual</h3>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label for="currentAddress">Dirección Completa <span class="required">*</span></label>
-                            <input type="text" id="currentAddress" name="currentAddress" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="currentCity">Ciudad <span class="required">*</span></label>
-                            <input type="text" id="currentCity" name="currentCity" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="currentState">Estado/Provincia <span class="required">*</span></label>
-                            <input type="text" id="currentState" name="currentState" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="currentPostalCode">Código Postal <span class="required">*</span></label>
-                            <input type="text" id="currentPostalCode" name="currentPostalCode" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="currentCountry">País <span class="required">*</span></label>
-                            <select id="currentCountry" name="currentCountry" required>
-                                <option value="">Seleccione un país</option>
-                                <option value="MX">México</option>
-                                <option value="US">Estados Unidos</option>
-                                <option value="CA">Canadá</option>
-                                <option value="ES">España</option>
-                                <option value="AR">Argentina</option>
-                                <option value="CO">Colombia</option>
-                                <option value="PE">Perú</option>
-                                <option value="CL">Chile</option>
-                            </select>
-                        </div>
-                    </div>
-                    <h3>Información de Contacto</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="phoneNumber">Teléfono <span class="required">*</span></label>
-                            <input type="tel" id="phoneNumber" name="phoneNumber" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="mobileNumber">Teléfono Móvil</label>
-                            <input type="tel" id="mobileNumber" name="mobileNumber">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Correo Electrónico <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="alternateEmail">Correo Electrónico Alternativo</label>
-                            <input type="email" id="alternateEmail" name="alternateEmail">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label>¿Su dirección de correo electrónico es la misma que la de su contacto de emergencia?</label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="sameEmailAsEmergency" value="yes"> Sí</label>
-                                <label><input type="radio" name="sameEmailAsEmergency" value="no"> No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <h3>Contacto de Emergencia</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="emergencyContactName">Nombre Completo <span class="required">*</span></label>
-                            <input type="text" id="emergencyContactName" name="emergencyContactName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emergencyContactRelationship">Relación <span class="required">*</span></label>
-                            <select id="emergencyContactRelationship" name="emergencyContactRelationship" required>
-                                <option value="">Seleccione</option>
-                                <option value="spouse">Cónyuge</option>
-                                <option value="parent">Padre/Madre</option>
-                                <option value="sibling">Hermano(a)</option>
-                                <option value="child">Hijo(a)</option>
-                                <option value="friend">Amigo(a)</option>
-                                <option value="other">Otro</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="emergencyContactPhone">Teléfono <span class="required">*</span></label>
-                            <input type="tel" id="emergencyContactPhone" name="emergencyContactPhone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emergencyContactEmail">Correo Electrónico</label>
-                            <input type="email" id="emergencyContactEmail" name="emergencyContactEmail">
+                    <div class="form-group full-width">
+                        <label>Q: Have you ever been in the U.S.?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" id="previousUSTravelYes" name="previousUSTravel" value="yes"> A: Yes</label>
+                            <label><input type="radio" id="previousUSTravelNo" name="previousUSTravel" value="no" checked> No</label>
                         </div>
                     </div>
                 </div>
