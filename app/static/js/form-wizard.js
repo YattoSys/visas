@@ -171,6 +171,22 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
+        // Step 4: Previus U.S. Travel - show details when Yes
+        const previousUSTravelRadios = document.querySelectorAll('input[name="previousUSTravel"]');
+        const previousUSTravelDetails = document.getElementById('previousUSTravelDetails');
+
+        if (previousUSTravelDetails) {
+            previousUSTravelRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        previousUSTravelDetails.style.display = 'block';
+                    } else {
+                        previousUSTravelDetails.style.display = 'none';
+                    }
+                });
+            });
+        }
+
         // Add Another / Remove for travel companions
         function clearCompanionEntries() {
             const container = document.getElementById('companionEntries');
