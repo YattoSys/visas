@@ -427,141 +427,43 @@
 
             <!-- Step 5: Informacion del la direccion y telefono -->
             <div class="wizard-step" data-step="5">
-                <h2>Información Familiar</h2>
+                <h2>Address and Phone Information</h2>
                 <div class="form-section">
-                    <h3>Información del Cónyuge (si aplica)</h3>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label>¿Está casado actualmente? <span class="required">*</span></label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="isMarried" value="yes" required> Sí</label>
-                                <label><input type="radio" name="isMarried" value="no" required> No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="spouseInfo" style="display: none;">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="spouseFirstName">Nombre del Cónyuge <span class="required">*</span></label>
-                                <input type="text" id="spouseFirstName" name="spouseFirstName">
-                            </div>
-                            <div class="form-group">
-                                <label for="spouseLastName">Apellido del Cónyuge <span class="required">*</span></label>
-                                <input type="text" id="spouseLastName" name="spouseLastName">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="spouseDateOfBirth">Fecha de Nacimiento del Cónyuge</label>
-                                <input type="date" id="spouseDateOfBirth" name="spouseDateOfBirth">
-                            </div>
-                            <div class="form-group">
-                                <label for="spouseNationality">Nacionalidad del Cónyuge</label>
-                                <select id="spouseNationality" name="spouseNationality">
-                                    <option value="">Seleccione</option>
-                                    <option value="MX">México</option>
-                                    <option value="US">Estados Unidos</option>
-                                    <option value="CA">Canadá</option>
-                                    <option value="ES">España</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <h3>Información de los Padres</h3>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="fatherFirstName">Nombre del Padre <span class="required">*</span></label>
-                            <input type="text" id="fatherFirstName" name="fatherFirstName" required>
+                            <label for="address"> Street Address (Line 1)</label>
+                            <input type="text">
                         </div>
                         <div class="form-group">
-                            <label for="fatherLastName">Apellido del Padre <span class="required">*</span></label>
-                            <input type="text" id="fatherLastName" name="fatherLastName" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fatherDateOfBirth">Fecha de Nacimiento del Padre</label>
-                            <input type="date" id="fatherDateOfBirth" name="fatherDateOfBirth">
+                            <label for="address1"> Street Address (Line 2)</label>
+                            <input type="text">
                         </div>
                         <div class="form-group">
-                            <label for="fatherNationality">Nacionalidad del Padre <span class="required">*</span></label>
-                            <select id="fatherNationality" name="fatherNationality" required>
-                                <option value="">Seleccione</option>
+                            <label for="city"> City</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="state"> State/Province</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="zip"> Postal Zone / ZIP Code</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="country"> Country / Region</label>
+                            <select id="permanentResidentCountry" name="permanentResidentCountry">
+                                <option value="">Seleccione un país</option>
                                 <option value="MX">México</option>
                                 <option value="US">Estados Unidos</option>
                                 <option value="CA">Canadá</option>
                                 <option value="ES">España</option>
+                                <option value="AR">Argentina</option>
+                                <option value="CO">Colombia</option>
+                                <option value="PE">Perú</option>
+                                <option value="CL">Chile</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="motherFirstName">Nombre de la Madre <span class="required">*</span></label>
-                            <input type="text" id="motherFirstName" name="motherFirstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="motherLastName">Apellido de la Madre <span class="required">*</span></label>
-                            <input type="text" id="motherLastName" name="motherLastName" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="motherDateOfBirth">Fecha de Nacimiento de la Madre</label>
-                            <input type="date" id="motherDateOfBirth" name="motherDateOfBirth">
-                        </div>
-                        <div class="form-group">
-                            <label for="motherNationality">Nacionalidad de la Madre <span class="required">*</span></label>
-                            <select id="motherNationality" name="motherNationality" required>
-                                <option value="">Seleccione</option>
-                                <option value="MX">México</option>
-                                <option value="US">Estados Unidos</option>
-                                <option value="CA">Canadá</option>
-                                <option value="ES">España</option>
-                            </select>
-                        </div>
-                    </div>
-                    <h3>Hijos (si aplica)</h3>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label>¿Tiene hijos? <span class="required">*</span></label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="hasChildren" value="yes" required> Sí</label>
-                                <label><input type="radio" name="hasChildren" value="no" required> No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="childrenInfo" style="display: none;">
-                        <div class="children-container">
-                            <div class="child-entry">
-                                <h4>Hijo(a) 1</h4>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label>Nombre</label>
-                                        <input type="text" name="childFirstName[]">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Apellido</label>
-                                        <input type="text" name="childLastName[]">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label>Fecha de Nacimiento</label>
-                                        <input type="date" name="childDateOfBirth[]">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Nacionalidad</label>
-                                        <select name="childNationality[]">
-                                            <option value="">Seleccione</option>
-                                            <option value="MX">México</option>
-                                            <option value="US">Estados Unidos</option>
-                                            <option value="CA">Canadá</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn-add-child">Agregar Otro Hijo</button>
                     </div>
                 </div>
             </div>
