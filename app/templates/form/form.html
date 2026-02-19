@@ -116,7 +116,7 @@
                             <label for="maritalStatus">Estado Civil <span class="required">*</span></label>
                             <select id="maritalStatus" name="maritalStatus" required>
                                 <option value="">Seleccione</option>
-                                <option value="single">Married)</option>
+                                <option value="single">Married</option>
                                 <option value="married">Common Law Married</option>
                                 <option value="divorced">Civil Union/Domestic Parthership</option>
                                 <option value="widowed">Single</option>
@@ -129,8 +129,8 @@
                         <label for="gender">Género <span class="required">*</span></label>
                         <select id="gender" name="gender" required>
                             <option value="">Seleccione</option>
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
                         </select>
                     </div>
                     </div>  
@@ -512,15 +512,41 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="form-group full-width"></div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="country"> Social Media Provider/Platform</label>
+                            <select id="permanentResidentCountry" name="permanentResidentCountry">
+                                <option value="">Select one</option>
+                                <option value="MX">ASK.FM</option>
+                                <option value="US">FACEBOOK</option>
+                                <option value="CA">INSTAGRAM</option>
+                                <option value="ES">FLICKR</option>
+                                <option value="AR">REDDIT</option>
+                                <option value="CO">YOUTUBE</option>
+                                <option value="PE">VINE</option>
+                                <option value="CL">NONE</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="social"> Social Media Identifier</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label> Do you wish to provide information about your presence on any other websites or applications you have used within the last five years to create or share content (photos, videos, status updates, etc.)?</label>
+                            <div class="radio-button">
+                                <label><input type="radio"> Yes</label>
+                                <label><input type="radio"> No</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Step 6: Información de Empleo/Educación solo para cumplir el git -->
+            <!-- Step 6: Passport -->
             <div class="wizard-step" data-step="6">
-                <h2>Información de Empleo y Educación</h2>
+                <h2>Passport Information</h2>
                 <div class="form-section">
                     <h3>Empleo Actual</h3>
                     <div class="form-row">
