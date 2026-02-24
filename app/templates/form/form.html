@@ -63,20 +63,20 @@
                 </div>
                 <div class="step-indicator" data-step="7">
                     <span class="step-number">7</span>
-                    <span class="step-label">U.S. Contact</span>
+                    <span class="step-label">Family</span>
                 </div>
                 <div class="step-indicator" data-step="8">
                     <span class="step-number">8</span>
-                    <span class="step-label">Family</span>
+                    <span class="step-label">Work / Education / Training</span>
                 </div>
                 <div class="step-indicator" data-step="9">
                     <span class="step-number">9</span>
-                    <span class="step-label">Work / Education / Training</span>
+                    <span class="step-label">WSecurity and Background</span>
                 </div>
-                <div class="step-indicator" data-step="10">
+                <!--<div class="step-indicator" data-step="10">
                     <span class="step-number">10</span>
                     <span class="step-label">Security and Background</span>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -544,99 +544,92 @@
                 </div>
             </div>
 
-            <!-- Step 6: Ultimo cambio en los comentarios -->
+            <!-- Step 6: Information Password -->
             <div class="wizard-step" data-step="6">
                 <h2>Passport Information</h2>
                 <div class="form-section">
-                    <h3>Empleo Actual</h3>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="occupation">Ocupación/Profesión <span class="required">*</span></label>
-                            <input type="text" id="occupation" name="occupation" required>
+                            <label for="paspport"> Passport/Travel Document Type</label>
+                            <select name="pasport" id="pasport">
+                                <option value="none">Select one</option>
+                                <option value="reg">Regular</option>
+                                <option value="">Offical</option>
+                                <option value="">Diplomatic</option>
+                                <option value="">Laizzer-Passer</option>
+                                <option value="">Other</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="employerName">Nombre del Empleador <span class="required">*</span></label>
-                            <input type="text" id="employerName" name="employerName" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="employerAddress">Dirección del Empleador <span class="required">*</span></label>
-                            <input type="text" id="employerAddress" name="employerAddress" required>
+                            <label for="passportid">  Passport/Travel Document Number</label>
+                            <input type="text">
                         </div>
                         <div class="form-group">
-                            <label for="employerCity">Ciudad <span class="required">*</span></label>
-                            <input type="text" id="employerCity" name="employerCity" required>
+                            <label for="passportbook">  Passport Book Number Error</label>
+                            <input type="text">
                         </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group">
-                            <label for="employerCountry">País <span class="required">*</span></label>
-                            <select id="employerCountry" name="employerCountry" required>
-                                <option value="">Seleccione</option>
+                            <label for="">  Country/Authority that Issued Passport/Travel</label>
+                            <select name="Contry" id="Contry">
+                                <option value="">Seleccione un país</option>
                                 <option value="MX">México</option>
                                 <option value="US">Estados Unidos</option>
                                 <option value="CA">Canadá</option>
                                 <option value="ES">España</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="employerPhone">Teléfono del Empleador</label>
-                            <input type="tel" id="employerPhone" name="employerPhone">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="employmentStartDate">Fecha de Inicio <span class="required">*</span></label>
-                            <input type="date" id="employmentStartDate" name="employmentStartDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="monthlyIncome">Ingreso Mensual (USD) <span class="required">*</span></label>
-                            <input type="number" id="monthlyIncome" name="monthlyIncome" min="0" step="0.01" required>
-                        </div>
-                    </div>
-                    <h3>Educación</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="educationLevel">Nivel de Educación <span class="required">*</span></label>
-                            <select id="educationLevel" name="educationLevel" required>
-                                <option value="">Seleccione</option>
-                                <option value="primary">Primaria</option>
-                                <option value="secondary">Secundaria</option>
-                                <option value="high_school">Preparatoria</option>
-                                <option value="bachelor">Licenciatura</option>
-                                <option value="master">Maestría</option>
-                                <option value="phd">Doctorado</option>
-                                <option value="other">Otro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="schoolName">Nombre de la Institución</label>
-                            <input type="text" id="schoolName" name="schoolName">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="schoolCity">Ciudad de la Institución</label>
-                            <input type="text" id="schoolCity" name="schoolCity">
-                        </div>
-                        <div class="form-group">
-                            <label for="schoolCountry">País de la Institución</label>
-                            <select id="schoolCountry" name="schoolCountry">
-                                <option value="">Seleccione</option>
-                                <option value="MX">México</option>
-                                <option value="US">Estados Unidos</option>
-                                <option value="CA">Canadá</option>
-                                <option value="ES">España</option>
+                                <option value="AR">Argentina</option>
+                                <option value="CO">Colombia</option>
+                                <option value="PE">Perú</option>
+                                <option value="CL">Chile</option>
                             </select>
                         </div>
                     </div>
                 </div>
+                <div class="form-section">
+                    <h3>Where was the Passport/Travel Document Issued?</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="">City</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="state"> State</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for=""> Country</label>
+                            <select name="Contry" id="Contry">
+                                <option value="">Seleccione un país</option>
+                                <option value="MX">México</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="CA">Canadá</option>
+                                <option value="ES">España</option>
+                                <option value="AR">Argentina</option>
+                                <option value="CO">Colombia</option>
+                                <option value="PE">Perú</option>
+                                <option value="CL">Chile</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for=""> Issuance Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label for=""> Expiration Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label for="">  Have you ever lost a passport or had one stolen?</label>
+                            <div class="radio-button">
+                                <label for=""><input type="radio"> Yes</label>
+                                <label for=""><input type="radio"> No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Step 7: Información de Seguridad otro comentario esta semana acabo -->
+            <!-- Step 7: Family Section -->
             <div class="wizard-step" data-step="7">
-                <h2>Información de Seguridad</h2>
+                <h2>Family Relatives</h2>
                 <div class="form-section">
                     <div class="form-row">
                         <div class="form-group full-width">
