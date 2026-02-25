@@ -631,91 +631,65 @@
             <div class="wizard-step" data-step="7">
                 <h2>Family Relatives</h2>
                 <div class="form-section">
+                    <h3>Father's Full Name and Date of Birth</h3>
                     <div class="form-row">
-                        <div class="form-group full-width">
-                            <label>¿Alguna vez ha sido condenado por un delito o infracción? <span class="required">*</span></label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="criminalRecord" value="yes" required> Sí</label>
-                                <label><input type="radio" name="criminalRecord" value="no" required> No</label>
+                        <div class="form-group">
+                            <label for="">Surnames</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Given Names</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Date of Birth</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Is your father in the U.S.?</label>
+                            <div class="radio-button">
+                                <label for=""><input type="radio">Yes</label>
+                                <label for=""><input type="radio">No</label>
                             </div>
                         </div>
                     </div>
-                    <div id="criminalRecordDetails" style="display: none;">
-                        <div class="form-row">
-                            <div class="form-group full-width">
-                                <label for="criminalRecordExplanation">Explique los detalles</label>
-                                <textarea id="criminalRecordExplanation" name="criminalRecordExplanation" rows="3"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    <h3>Mother's Full Name and Date of Birth</h3>
                     <div class="form-row">
-                        <div class="form-group full-width">
-                            <label>¿Alguna vez ha sido rechazado una visa o entrada a algún país? <span class="required">*</span></label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="visaDenied" value="yes" required> Sí</label>
-                                <label><input type="radio" name="visaDenied" value="no" required> No</label>
-                            </div>
+                        <div class="form-group">
+                            <label for="">Surnames</label>
+                            <input type="text">
                         </div>
-                    </div>
-                    <div id="visaDeniedDetails" style="display: none;">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="visaDeniedCountry">País</label>
-                                <input type="text" id="visaDeniedCountry" name="visaDeniedCountry">
-                            </div>
-                            <div class="form-group">
-                                <label for="visaDeniedDate">Fecha</label>
-                                <input type="date" id="visaDeniedDate" name="visaDeniedDate">
-                            </div>
+                        <div class="form-group">
+                            <label for="">Given Names</label>
+                            <input type="text">
                         </div>
-                        <div class="form-row">
-                            <div class="form-group full-width">
-                                <label for="visaDeniedExplanation">Razón del rechazo</label>
-                                <textarea id="visaDeniedExplanation" name="visaDeniedExplanation" rows="3"></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label for="">Date of Birth</label>
+                            <input type="date">
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label>¿Tiene alguna enfermedad contagiosa o condición médica que requiera atención? <span class="required">*</span></label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="medicalCondition" value="yes" required> Sí</label>
-                                <label><input type="radio" name="medicalCondition" value="no" required> No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="medicalConditionDetails" style="display: none;">
-                        <div class="form-row">
-                            <div class="form-group full-width">
-                                <label for="medicalConditionExplanation">Explique los detalles</label>
-                                <textarea id="medicalConditionExplanation" name="medicalConditionExplanation" rows="3"></textarea>
+                        <div class="form-group">
+                            <label for="">Is your mother in the U.S.?</label>
+                            <div class="radio-button">
+                                <label for=""><input type="radio">Yes</label>
+                                <label for=""><input type="radio">No</label>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group full-width">
-                            <label>¿Está involucrado en actividades terroristas o ha proporcionado apoyo a organizaciones terroristas? <span class="required">*</span></label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="terroristActivity" value="yes" required> Sí</label>
-                                <label><input type="radio" name="terroristActivity" value="no" required> No</label>
+                            <label for=""> Do you have any immediate relatives, not including parents, in the United States? </label>
+                            <div class="radio-button">
+                                <label for=""><input type="radio"> Yes</label>
+                                <label for=""><input type="radio"> No</label>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group full-width">
-                            <label>¿Ha estado involucrado en tráfico de drogas? <span class="required">*</span></label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="drugTrafficking" value="yes" required> Sí</label>
-                                <label><input type="radio" name="drugTrafficking" value="no" required> No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label>¿Ha estado involucrado en actividades de lavado de dinero? <span class="required">*</span></label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="moneyLaundering" value="yes" required> Sí</label>
-                                <label><input type="radio" name="moneyLaundering" value="no" required> No</label>
+                            <label for="">Do you have any other relatives in the United States?</label>
+                            <div class="radio-button">
+                                <label for=""><input type="radio"> Yes</label>
+                                <label for=""><input type="radio"> No</label>
                             </div>
                         </div>
                     </div>
